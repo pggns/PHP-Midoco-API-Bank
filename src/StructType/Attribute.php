@@ -15,6 +15,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * ignored
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Attribute extends AbstractStructBase
 {
     /**

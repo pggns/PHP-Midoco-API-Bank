@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchBankCache4EntryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchBankCache4EntryRequest extends AbstractStructBase
 {
     /**

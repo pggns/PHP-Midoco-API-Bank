@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetRevenueInfoForOrderResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetRevenueInfoForOrderResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetRevenueInfoForOrderResponse extends AbstractStructBase
      * - ref: MidocoRevenueInfo
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoRevenueInfo[]
      */
-    protected array $MidocoRevenueInfo = [];
+    protected ?array $MidocoRevenueInfo = null;
     /**
      * Constructor method for GetRevenueInfoForOrderResponse
      * @uses GetRevenueInfoForOrderResponse::setMidocoRevenueInfo()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoRevenueInfo[] $midocoRevenueInfo
      */
-    public function __construct(array $midocoRevenueInfo = [])
+    public function __construct(?array $midocoRevenueInfo = null)
     {
         $this
             ->setMidocoRevenueInfo($midocoRevenueInfo);
@@ -36,18 +37,22 @@ class GetRevenueInfoForOrderResponse extends AbstractStructBase
      * Get MidocoRevenueInfo value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoRevenueInfo[]
      */
-    public function getMidocoRevenueInfo(): array
+    public function getMidocoRevenueInfo(): ?array
     {
         return $this->MidocoRevenueInfo;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoRevenueInfo method
+     * This method is responsible for validating the value(s) passed to the setMidocoRevenueInfo method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoRevenueInfo method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoRevenueInfoForArrayConstraintsFromSetMidocoRevenueInfo(array $values = []): string
+    public static function validateMidocoRevenueInfoForArrayConstraintFromSetMidocoRevenueInfo(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getRevenueInfoForOrderResponseMidocoRevenueInfoItem) {
@@ -69,10 +74,10 @@ class GetRevenueInfoForOrderResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoRevenueInfo[] $midocoRevenueInfo
      * @return \Pggns\MidocoApi\Bank\StructType\GetRevenueInfoForOrderResponse
      */
-    public function setMidocoRevenueInfo(array $midocoRevenueInfo = []): self
+    public function setMidocoRevenueInfo(?array $midocoRevenueInfo = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoRevenueInfoArrayErrorMessage = self::validateMidocoRevenueInfoForArrayConstraintsFromSetMidocoRevenueInfo($midocoRevenueInfo))) {
+        if ('' !== ($midocoRevenueInfoArrayErrorMessage = self::validateMidocoRevenueInfoForArrayConstraintFromSetMidocoRevenueInfo($midocoRevenueInfo))) {
             throw new InvalidArgumentException($midocoRevenueInfoArrayErrorMessage, __LINE__);
         }
         $this->MidocoRevenueInfo = $midocoRevenueInfo;

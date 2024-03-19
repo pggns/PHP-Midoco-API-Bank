@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckMidocoBankBookingJournalType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckMidocoBankBookingJournalType extends AbstractStructBase
 {
     /**

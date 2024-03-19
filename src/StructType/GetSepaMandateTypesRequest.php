@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSepaMandateTypesRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSepaMandateTypesRequest extends AbstractStructBase
 {
     /**

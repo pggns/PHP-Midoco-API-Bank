@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBankOrderType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBankOrderType extends MidocoBookingInfoType
 {
     /**

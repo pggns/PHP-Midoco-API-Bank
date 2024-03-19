@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteBankCacheRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBankCacheRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class DeleteBankCacheRequest extends AbstractStructBase
      * - ref: MidocoBankCache
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankCache[]
      */
-    protected array $MidocoBankCache = [];
+    protected ?array $MidocoBankCache = null;
     /**
      * Constructor method for DeleteBankCacheRequest
      * @uses DeleteBankCacheRequest::setMidocoBankCache()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankCache[] $midocoBankCache
      */
-    public function __construct(array $midocoBankCache = [])
+    public function __construct(?array $midocoBankCache = null)
     {
         $this
             ->setMidocoBankCache($midocoBankCache);
@@ -35,18 +36,22 @@ class DeleteBankCacheRequest extends AbstractStructBase
      * Get MidocoBankCache value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankCache[]
      */
-    public function getMidocoBankCache(): array
+    public function getMidocoBankCache(): ?array
     {
         return $this->MidocoBankCache;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankCache method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankCache method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankCache method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankCacheForArrayConstraintsFromSetMidocoBankCache(array $values = []): string
+    public static function validateMidocoBankCacheForArrayConstraintFromSetMidocoBankCache(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $deleteBankCacheRequestMidocoBankCacheItem) {
@@ -68,10 +73,10 @@ class DeleteBankCacheRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankCache[] $midocoBankCache
      * @return \Pggns\MidocoApi\Bank\StructType\DeleteBankCacheRequest
      */
-    public function setMidocoBankCache(array $midocoBankCache = []): self
+    public function setMidocoBankCache(?array $midocoBankCache = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankCacheArrayErrorMessage = self::validateMidocoBankCacheForArrayConstraintsFromSetMidocoBankCache($midocoBankCache))) {
+        if ('' !== ($midocoBankCacheArrayErrorMessage = self::validateMidocoBankCacheForArrayConstraintFromSetMidocoBankCache($midocoBankCache))) {
             throw new InvalidArgumentException($midocoBankCacheArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankCache = $midocoBankCache;

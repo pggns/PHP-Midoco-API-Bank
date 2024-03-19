@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CollectCreditCardPositionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CollectCreditCardPositionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class CollectCreditCardPositionsResponse extends AbstractStructBase
      * - ref: order:MidocoCreditCardPosition
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoCreditCardPosition[]
      */
-    protected array $MidocoCreditCardPosition = [];
+    protected ?array $MidocoCreditCardPosition = null;
     /**
      * Constructor method for CollectCreditCardPositionsResponse
      * @uses CollectCreditCardPositionsResponse::setMidocoCreditCardPosition()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoCreditCardPosition[] $midocoCreditCardPosition
      */
-    public function __construct(array $midocoCreditCardPosition = [])
+    public function __construct(?array $midocoCreditCardPosition = null)
     {
         $this
             ->setMidocoCreditCardPosition($midocoCreditCardPosition);
@@ -36,18 +37,22 @@ class CollectCreditCardPositionsResponse extends AbstractStructBase
      * Get MidocoCreditCardPosition value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoCreditCardPosition[]
      */
-    public function getMidocoCreditCardPosition(): array
+    public function getMidocoCreditCardPosition(): ?array
     {
         return $this->MidocoCreditCardPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoCreditCardPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoCreditCardPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoCreditCardPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoCreditCardPositionForArrayConstraintsFromSetMidocoCreditCardPosition(array $values = []): string
+    public static function validateMidocoCreditCardPositionForArrayConstraintFromSetMidocoCreditCardPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $collectCreditCardPositionsResponseMidocoCreditCardPositionItem) {
@@ -69,10 +74,10 @@ class CollectCreditCardPositionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoCreditCardPosition[] $midocoCreditCardPosition
      * @return \Pggns\MidocoApi\Bank\StructType\CollectCreditCardPositionsResponse
      */
-    public function setMidocoCreditCardPosition(array $midocoCreditCardPosition = []): self
+    public function setMidocoCreditCardPosition(?array $midocoCreditCardPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoCreditCardPositionArrayErrorMessage = self::validateMidocoCreditCardPositionForArrayConstraintsFromSetMidocoCreditCardPosition($midocoCreditCardPosition))) {
+        if ('' !== ($midocoCreditCardPositionArrayErrorMessage = self::validateMidocoCreditCardPositionForArrayConstraintFromSetMidocoCreditCardPosition($midocoCreditCardPosition))) {
             throw new InvalidArgumentException($midocoCreditCardPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoCreditCardPosition = $midocoCreditCardPosition;

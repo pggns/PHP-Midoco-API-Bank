@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBookingBatchRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBookingBatchRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchDebitor4EntryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchDebitor4EntryResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class SearchDebitor4EntryResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $debitor = [];
+    protected ?array $debitor = null;
     /**
      * Constructor method for SearchDebitor4EntryResponse
      * @uses SearchDebitor4EntryResponse::setDebitor()
      * @param string[] $debitor
      */
-    public function __construct(array $debitor = [])
+    public function __construct(?array $debitor = null)
     {
         $this
             ->setDebitor($debitor);
@@ -35,18 +36,22 @@ class SearchDebitor4EntryResponse extends AbstractStructBase
      * Get debitor value
      * @return string[]
      */
-    public function getDebitor(): array
+    public function getDebitor(): ?array
     {
         return $this->debitor;
     }
     /**
-     * This method is responsible for validating the values passed to the setDebitor method
+     * This method is responsible for validating the value(s) passed to the setDebitor method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDebitor method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDebitorForArrayConstraintsFromSetDebitor(array $values = []): string
+    public static function validateDebitorForArrayConstraintFromSetDebitor(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchDebitor4EntryResponseDebitorItem) {
@@ -68,10 +73,10 @@ class SearchDebitor4EntryResponse extends AbstractStructBase
      * @param string[] $debitor
      * @return \Pggns\MidocoApi\Bank\StructType\SearchDebitor4EntryResponse
      */
-    public function setDebitor(array $debitor = []): self
+    public function setDebitor(?array $debitor = null): self
     {
         // validation for constraint: array
-        if ('' !== ($debitorArrayErrorMessage = self::validateDebitorForArrayConstraintsFromSetDebitor($debitor))) {
+        if ('' !== ($debitorArrayErrorMessage = self::validateDebitorForArrayConstraintFromSetDebitor($debitor))) {
             throw new InvalidArgumentException($debitorArrayErrorMessage, __LINE__);
         }
         $this->debitor = $debitor;

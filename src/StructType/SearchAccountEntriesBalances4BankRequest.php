@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchAccountEntriesBalances4BankRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchAccountEntriesBalances4BankRequest extends AbstractStructBase
 {
     /**

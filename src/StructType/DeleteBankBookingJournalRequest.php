@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteBankBookingJournalRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBankBookingJournalRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class DeleteBankBookingJournalRequest extends AbstractStructBase
      * - ref: MidocoBankBookingJournal
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[]
      */
-    protected array $MidocoBankBookingJournal = [];
+    protected ?array $MidocoBankBookingJournal = null;
     /**
      * Constructor method for DeleteBankBookingJournalRequest
      * @uses DeleteBankBookingJournalRequest::setMidocoBankBookingJournal()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[] $midocoBankBookingJournal
      */
-    public function __construct(array $midocoBankBookingJournal = [])
+    public function __construct(?array $midocoBankBookingJournal = null)
     {
         $this
             ->setMidocoBankBookingJournal($midocoBankBookingJournal);
@@ -35,18 +36,22 @@ class DeleteBankBookingJournalRequest extends AbstractStructBase
      * Get MidocoBankBookingJournal value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[]
      */
-    public function getMidocoBankBookingJournal(): array
+    public function getMidocoBankBookingJournal(): ?array
     {
         return $this->MidocoBankBookingJournal;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankBookingJournal method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankBookingJournal method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankBookingJournal method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankBookingJournalForArrayConstraintsFromSetMidocoBankBookingJournal(array $values = []): string
+    public static function validateMidocoBankBookingJournalForArrayConstraintFromSetMidocoBankBookingJournal(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $deleteBankBookingJournalRequestMidocoBankBookingJournalItem) {
@@ -68,10 +73,10 @@ class DeleteBankBookingJournalRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[] $midocoBankBookingJournal
      * @return \Pggns\MidocoApi\Bank\StructType\DeleteBankBookingJournalRequest
      */
-    public function setMidocoBankBookingJournal(array $midocoBankBookingJournal = []): self
+    public function setMidocoBankBookingJournal(?array $midocoBankBookingJournal = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankBookingJournalArrayErrorMessage = self::validateMidocoBankBookingJournalForArrayConstraintsFromSetMidocoBankBookingJournal($midocoBankBookingJournal))) {
+        if ('' !== ($midocoBankBookingJournalArrayErrorMessage = self::validateMidocoBankBookingJournalForArrayConstraintFromSetMidocoBankBookingJournal($midocoBankBookingJournal))) {
             throw new InvalidArgumentException($midocoBankBookingJournalArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankBookingJournal = $midocoBankBookingJournal;

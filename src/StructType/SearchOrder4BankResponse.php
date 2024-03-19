@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchOrder4BankResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchOrder4BankResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchOrder4BankResponse extends AbstractStructBase
      * - ref: MidocoBankOrderType
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankOrderType[]
      */
-    protected array $MidocoBankOrderType = [];
+    protected ?array $MidocoBankOrderType = null;
     /**
      * Constructor method for SearchOrder4BankResponse
      * @uses SearchOrder4BankResponse::setMidocoBankOrderType()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankOrderType[] $midocoBankOrderType
      */
-    public function __construct(array $midocoBankOrderType = [])
+    public function __construct(?array $midocoBankOrderType = null)
     {
         $this
             ->setMidocoBankOrderType($midocoBankOrderType);
@@ -36,18 +37,22 @@ class SearchOrder4BankResponse extends AbstractStructBase
      * Get MidocoBankOrderType value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankOrderType[]
      */
-    public function getMidocoBankOrderType(): array
+    public function getMidocoBankOrderType(): ?array
     {
         return $this->MidocoBankOrderType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankOrderType method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankOrderType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankOrderType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankOrderTypeForArrayConstraintsFromSetMidocoBankOrderType(array $values = []): string
+    public static function validateMidocoBankOrderTypeForArrayConstraintFromSetMidocoBankOrderType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchOrder4BankResponseMidocoBankOrderTypeItem) {
@@ -69,10 +74,10 @@ class SearchOrder4BankResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankOrderType[] $midocoBankOrderType
      * @return \Pggns\MidocoApi\Bank\StructType\SearchOrder4BankResponse
      */
-    public function setMidocoBankOrderType(array $midocoBankOrderType = []): self
+    public function setMidocoBankOrderType(?array $midocoBankOrderType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankOrderTypeArrayErrorMessage = self::validateMidocoBankOrderTypeForArrayConstraintsFromSetMidocoBankOrderType($midocoBankOrderType))) {
+        if ('' !== ($midocoBankOrderTypeArrayErrorMessage = self::validateMidocoBankOrderTypeForArrayConstraintFromSetMidocoBankOrderType($midocoBankOrderType))) {
             throw new InvalidArgumentException($midocoBankOrderTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankOrderType = $midocoBankOrderType;

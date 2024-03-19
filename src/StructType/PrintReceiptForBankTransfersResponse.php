@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintReceiptForBankTransfersResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintReceiptForBankTransfersResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class PrintReceiptForBankTransfersResponse extends AbstractStructBase
      * - ref: PrintReceiptForBankTransfersType
      * @var \Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersType[]
      */
-    protected array $PrintReceiptForBankTransfersType = [];
+    protected ?array $PrintReceiptForBankTransfersType = null;
     /**
      * The printJobId
      * @var int|null
@@ -34,7 +35,7 @@ class PrintReceiptForBankTransfersResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersType[] $printReceiptForBankTransfersType
      * @param int $printJobId
      */
-    public function __construct(array $printReceiptForBankTransfersType = [], ?int $printJobId = null)
+    public function __construct(?array $printReceiptForBankTransfersType = null, ?int $printJobId = null)
     {
         $this
             ->setPrintReceiptForBankTransfersType($printReceiptForBankTransfersType)
@@ -44,18 +45,22 @@ class PrintReceiptForBankTransfersResponse extends AbstractStructBase
      * Get PrintReceiptForBankTransfersType value
      * @return \Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersType[]
      */
-    public function getPrintReceiptForBankTransfersType(): array
+    public function getPrintReceiptForBankTransfersType(): ?array
     {
         return $this->PrintReceiptForBankTransfersType;
     }
     /**
-     * This method is responsible for validating the values passed to the setPrintReceiptForBankTransfersType method
+     * This method is responsible for validating the value(s) passed to the setPrintReceiptForBankTransfersType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPrintReceiptForBankTransfersType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePrintReceiptForBankTransfersTypeForArrayConstraintsFromSetPrintReceiptForBankTransfersType(array $values = []): string
+    public static function validatePrintReceiptForBankTransfersTypeForArrayConstraintFromSetPrintReceiptForBankTransfersType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printReceiptForBankTransfersResponsePrintReceiptForBankTransfersTypeItem) {
@@ -77,10 +82,10 @@ class PrintReceiptForBankTransfersResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersType[] $printReceiptForBankTransfersType
      * @return \Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersResponse
      */
-    public function setPrintReceiptForBankTransfersType(array $printReceiptForBankTransfersType = []): self
+    public function setPrintReceiptForBankTransfersType(?array $printReceiptForBankTransfersType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($printReceiptForBankTransfersTypeArrayErrorMessage = self::validatePrintReceiptForBankTransfersTypeForArrayConstraintsFromSetPrintReceiptForBankTransfersType($printReceiptForBankTransfersType))) {
+        if ('' !== ($printReceiptForBankTransfersTypeArrayErrorMessage = self::validatePrintReceiptForBankTransfersTypeForArrayConstraintFromSetPrintReceiptForBankTransfersType($printReceiptForBankTransfersType))) {
             throw new InvalidArgumentException($printReceiptForBankTransfersTypeArrayErrorMessage, __LINE__);
         }
         $this->PrintReceiptForBankTransfersType = $printReceiptForBankTransfersType;

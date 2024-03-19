@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for RebuildDocument4BankStatementProtocolResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class RebuildDocument4BankStatementProtocolResponse extends AbstractStructBase
 {
     /**

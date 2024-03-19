@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportSepaTelecashTransactionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportSepaTelecashTransactionsRequest extends AbstractStructBase
 {
     /**

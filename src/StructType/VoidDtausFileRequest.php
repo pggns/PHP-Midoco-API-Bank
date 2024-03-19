@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for VoidDtausFileRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class VoidDtausFileRequest extends AbstractStructBase
 {
     /**

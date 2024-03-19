@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CollectBankPaymentPositionsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CollectBankPaymentPositionsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class CollectBankPaymentPositionsResponse extends AbstractStructBase
      * - ref: order:MidocoDirectDebitPosition
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoDirectDebitPosition[]
      */
-    protected array $MidocoDirectDebitPosition = [];
+    protected ?array $MidocoDirectDebitPosition = null;
     /**
      * Constructor method for CollectBankPaymentPositionsResponse
      * @uses CollectBankPaymentPositionsResponse::setMidocoDirectDebitPosition()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoDirectDebitPosition[] $midocoDirectDebitPosition
      */
-    public function __construct(array $midocoDirectDebitPosition = [])
+    public function __construct(?array $midocoDirectDebitPosition = null)
     {
         $this
             ->setMidocoDirectDebitPosition($midocoDirectDebitPosition);
@@ -36,18 +37,22 @@ class CollectBankPaymentPositionsResponse extends AbstractStructBase
      * Get MidocoDirectDebitPosition value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoDirectDebitPosition[]
      */
-    public function getMidocoDirectDebitPosition(): array
+    public function getMidocoDirectDebitPosition(): ?array
     {
         return $this->MidocoDirectDebitPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDirectDebitPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoDirectDebitPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDirectDebitPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDirectDebitPositionForArrayConstraintsFromSetMidocoDirectDebitPosition(array $values = []): string
+    public static function validateMidocoDirectDebitPositionForArrayConstraintFromSetMidocoDirectDebitPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $collectBankPaymentPositionsResponseMidocoDirectDebitPositionItem) {
@@ -69,10 +74,10 @@ class CollectBankPaymentPositionsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoDirectDebitPosition[] $midocoDirectDebitPosition
      * @return \Pggns\MidocoApi\Bank\StructType\CollectBankPaymentPositionsResponse
      */
-    public function setMidocoDirectDebitPosition(array $midocoDirectDebitPosition = []): self
+    public function setMidocoDirectDebitPosition(?array $midocoDirectDebitPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDirectDebitPositionArrayErrorMessage = self::validateMidocoDirectDebitPositionForArrayConstraintsFromSetMidocoDirectDebitPosition($midocoDirectDebitPosition))) {
+        if ('' !== ($midocoDirectDebitPositionArrayErrorMessage = self::validateMidocoDirectDebitPositionForArrayConstraintFromSetMidocoDirectDebitPosition($midocoDirectDebitPosition))) {
             throw new InvalidArgumentException($midocoDirectDebitPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoDirectDebitPosition = $midocoDirectDebitPosition;

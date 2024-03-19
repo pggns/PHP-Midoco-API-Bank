@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ProtocolBankBookingJournal StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ProtocolBankBookingJournal extends BankBookingJournalDTO
 {
 }

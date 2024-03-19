@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - type: MidocoEntryHistoryType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoEntryHistory extends EntryHistoryDTO
 {
     /**

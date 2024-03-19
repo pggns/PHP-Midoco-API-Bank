@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetMidocoSearchBankStatementProtocolResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetMidocoSearchBankStatementProtocolResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetMidocoSearchBankStatementProtocolResponse extends AbstractStructBase
      * - ref: MidocoSearchBankStatementProtocol
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoSearchBankStatementProtocol[]
      */
-    protected array $MidocoSearchBankStatementProtocol = [];
+    protected ?array $MidocoSearchBankStatementProtocol = null;
     /**
      * Constructor method for GetMidocoSearchBankStatementProtocolResponse
      * @uses GetMidocoSearchBankStatementProtocolResponse::setMidocoSearchBankStatementProtocol()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoSearchBankStatementProtocol[] $midocoSearchBankStatementProtocol
      */
-    public function __construct(array $midocoSearchBankStatementProtocol = [])
+    public function __construct(?array $midocoSearchBankStatementProtocol = null)
     {
         $this
             ->setMidocoSearchBankStatementProtocol($midocoSearchBankStatementProtocol);
@@ -36,18 +37,22 @@ class GetMidocoSearchBankStatementProtocolResponse extends AbstractStructBase
      * Get MidocoSearchBankStatementProtocol value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoSearchBankStatementProtocol[]
      */
-    public function getMidocoSearchBankStatementProtocol(): array
+    public function getMidocoSearchBankStatementProtocol(): ?array
     {
         return $this->MidocoSearchBankStatementProtocol;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSearchBankStatementProtocol method
+     * This method is responsible for validating the value(s) passed to the setMidocoSearchBankStatementProtocol method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSearchBankStatementProtocol method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSearchBankStatementProtocolForArrayConstraintsFromSetMidocoSearchBankStatementProtocol(array $values = []): string
+    public static function validateMidocoSearchBankStatementProtocolForArrayConstraintFromSetMidocoSearchBankStatementProtocol(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getMidocoSearchBankStatementProtocolResponseMidocoSearchBankStatementProtocolItem) {
@@ -69,10 +74,10 @@ class GetMidocoSearchBankStatementProtocolResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoSearchBankStatementProtocol[] $midocoSearchBankStatementProtocol
      * @return \Pggns\MidocoApi\Bank\StructType\GetMidocoSearchBankStatementProtocolResponse
      */
-    public function setMidocoSearchBankStatementProtocol(array $midocoSearchBankStatementProtocol = []): self
+    public function setMidocoSearchBankStatementProtocol(?array $midocoSearchBankStatementProtocol = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSearchBankStatementProtocolArrayErrorMessage = self::validateMidocoSearchBankStatementProtocolForArrayConstraintsFromSetMidocoSearchBankStatementProtocol($midocoSearchBankStatementProtocol))) {
+        if ('' !== ($midocoSearchBankStatementProtocolArrayErrorMessage = self::validateMidocoSearchBankStatementProtocolForArrayConstraintFromSetMidocoSearchBankStatementProtocol($midocoSearchBankStatementProtocol))) {
             throw new InvalidArgumentException($midocoSearchBankStatementProtocolArrayErrorMessage, __LINE__);
         }
         $this->MidocoSearchBankStatementProtocol = $midocoSearchBankStatementProtocol;

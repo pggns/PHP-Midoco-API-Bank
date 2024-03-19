@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: optional dunning infos at order level
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DunningInfo extends AbstractStructBase
 {
     /**
@@ -94,7 +95,7 @@ class DunningInfo extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dunning_date, true), gettype($dunning_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($dunning_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $dunning_date)) {
+        if (!is_null($dunning_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $dunning_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($dunning_date, true)), __LINE__);
         }
         $this->dunning_date = $this->{'dunning-date'} = $dunning_date;
@@ -121,7 +122,7 @@ class DunningInfo extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($payment_due_date, true), gettype($payment_due_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($payment_due_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $payment_due_date)) {
+        if (!is_null($payment_due_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $payment_due_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($payment_due_date, true)), __LINE__);
         }
         $this->payment_due_date = $this->{'payment-due-date'} = $payment_due_date;
@@ -148,7 +149,7 @@ class DunningInfo extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($deposit_dunning_date, true), gettype($deposit_dunning_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($deposit_dunning_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $deposit_dunning_date)) {
+        if (!is_null($deposit_dunning_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $deposit_dunning_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($deposit_dunning_date, true)), __LINE__);
         }
         $this->deposit_dunning_date = $this->{'deposit-dunning-date'} = $deposit_dunning_date;
@@ -175,7 +176,7 @@ class DunningInfo extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($deposit_payment_due_date, true), gettype($deposit_payment_due_date)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4}-[0-9]{2}-[0-9]{2})
-        if (!is_null($deposit_payment_due_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', $deposit_payment_due_date)) {
+        if (!is_null($deposit_payment_due_date) && !preg_match('/[0-9]{4}-[0-9]{2}-[0-9]{2}/', (string) $deposit_payment_due_date)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}-[0-9]{2}-[0-9]{2}/', var_export($deposit_payment_due_date, true)), __LINE__);
         }
         $this->deposit_payment_due_date = $this->{'deposit-payment-due-date'} = $deposit_payment_due_date;

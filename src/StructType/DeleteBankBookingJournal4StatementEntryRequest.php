@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteBankBookingJournal4StatementEntryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBankBookingJournal4StatementEntryRequest extends AbstractStructBase
 {
     /**

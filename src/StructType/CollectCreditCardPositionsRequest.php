@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CollectCreditCardPositionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CollectCreditCardPositionsRequest extends AbstractStructBase
 {
     /**
@@ -25,7 +26,7 @@ class CollectCreditCardPositionsRequest extends AbstractStructBase
      * - ref: CreditCardType
      * @var string[]
      */
-    protected array $CreditCardType = [];
+    protected ?array $CreditCardType = null;
     /**
      * The orderId
      * Meta information extracted from the WSDL
@@ -42,7 +43,7 @@ class CollectCreditCardPositionsRequest extends AbstractStructBase
      * @param string[] $creditCardType
      * @param int $orderId
      */
-    public function __construct(?string $perDate = null, array $creditCardType = [], ?int $orderId = null)
+    public function __construct(?string $perDate = null, ?array $creditCardType = null, ?int $orderId = null)
     {
         $this
             ->setPerDate($perDate)
@@ -76,18 +77,22 @@ class CollectCreditCardPositionsRequest extends AbstractStructBase
      * Get CreditCardType value
      * @return string[]
      */
-    public function getCreditCardType(): array
+    public function getCreditCardType(): ?array
     {
         return $this->CreditCardType;
     }
     /**
-     * This method is responsible for validating the values passed to the setCreditCardType method
+     * This method is responsible for validating the value(s) passed to the setCreditCardType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCreditCardType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCreditCardTypeForArrayConstraintsFromSetCreditCardType(array $values = []): string
+    public static function validateCreditCardTypeForArrayConstraintFromSetCreditCardType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $collectCreditCardPositionsRequestCreditCardTypeItem) {
@@ -111,10 +116,10 @@ class CollectCreditCardPositionsRequest extends AbstractStructBase
      * @param string[] $creditCardType
      * @return \Pggns\MidocoApi\Bank\StructType\CollectCreditCardPositionsRequest
      */
-    public function setCreditCardType(array $creditCardType = []): self
+    public function setCreditCardType(?array $creditCardType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($creditCardTypeArrayErrorMessage = self::validateCreditCardTypeForArrayConstraintsFromSetCreditCardType($creditCardType))) {
+        if ('' !== ($creditCardTypeArrayErrorMessage = self::validateCreditCardTypeForArrayConstraintFromSetCreditCardType($creditCardType))) {
             throw new InvalidArgumentException($creditCardTypeArrayErrorMessage, __LINE__);
         }
         $this->CreditCardType = $creditCardType;

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: reference data for unister payment
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class OnlineDirectDebitRequest extends AbstractStructBase
 {
     /**
@@ -23,7 +24,7 @@ class OnlineDirectDebitRequest extends AbstractStructBase
      * - ref: order:MidocoDirectDebitPosition
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoDirectDebitPosition[]
      */
-    protected array $MidocoDirectDebitPosition = [];
+    protected array $MidocoDirectDebitPosition;
     /**
      * The paymentType
      * @var int|null
@@ -73,13 +74,17 @@ class OnlineDirectDebitRequest extends AbstractStructBase
         return $this->MidocoDirectDebitPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDirectDebitPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoDirectDebitPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDirectDebitPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDirectDebitPositionForArrayConstraintsFromSetMidocoDirectDebitPosition(array $values = []): string
+    public static function validateMidocoDirectDebitPositionForArrayConstraintFromSetMidocoDirectDebitPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $onlineDirectDebitRequestMidocoDirectDebitPositionItem) {
@@ -104,7 +109,7 @@ class OnlineDirectDebitRequest extends AbstractStructBase
     public function setMidocoDirectDebitPosition(array $midocoDirectDebitPosition): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDirectDebitPositionArrayErrorMessage = self::validateMidocoDirectDebitPositionForArrayConstraintsFromSetMidocoDirectDebitPosition($midocoDirectDebitPosition))) {
+        if ('' !== ($midocoDirectDebitPositionArrayErrorMessage = self::validateMidocoDirectDebitPositionForArrayConstraintFromSetMidocoDirectDebitPosition($midocoDirectDebitPosition))) {
             throw new InvalidArgumentException($midocoDirectDebitPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoDirectDebitPosition = $midocoDirectDebitPosition;

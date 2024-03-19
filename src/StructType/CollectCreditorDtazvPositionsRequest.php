@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CollectCreditorDtazvPositionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CollectCreditorDtazvPositionsRequest extends AbstractStructBase
 {
     /**

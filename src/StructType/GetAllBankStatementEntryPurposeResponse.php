@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAllBankStatementEntryPurposeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAllBankStatementEntryPurposeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAllBankStatementEntryPurposeResponse extends AbstractStructBase
      * - ref: GetBankStatementEntryPurposeResponse
      * @var \Pggns\MidocoApi\Bank\StructType\GetBankStatementEntryPurposeResponse[]
      */
-    protected array $GetBankStatementEntryPurposeResponse = [];
+    protected ?array $GetBankStatementEntryPurposeResponse = null;
     /**
      * Constructor method for GetAllBankStatementEntryPurposeResponse
      * @uses GetAllBankStatementEntryPurposeResponse::setGetBankStatementEntryPurposeResponse()
      * @param \Pggns\MidocoApi\Bank\StructType\GetBankStatementEntryPurposeResponse[] $getBankStatementEntryPurposeResponse
      */
-    public function __construct(array $getBankStatementEntryPurposeResponse = [])
+    public function __construct(?array $getBankStatementEntryPurposeResponse = null)
     {
         $this
             ->setGetBankStatementEntryPurposeResponse($getBankStatementEntryPurposeResponse);
@@ -36,18 +37,22 @@ class GetAllBankStatementEntryPurposeResponse extends AbstractStructBase
      * Get GetBankStatementEntryPurposeResponse value
      * @return \Pggns\MidocoApi\Bank\StructType\GetBankStatementEntryPurposeResponse[]
      */
-    public function getGetBankStatementEntryPurposeResponse(): array
+    public function getGetBankStatementEntryPurposeResponse(): ?array
     {
         return $this->GetBankStatementEntryPurposeResponse;
     }
     /**
-     * This method is responsible for validating the values passed to the setGetBankStatementEntryPurposeResponse method
+     * This method is responsible for validating the value(s) passed to the setGetBankStatementEntryPurposeResponse method
      * This method is willingly generated in order to preserve the one-line inline validation within the setGetBankStatementEntryPurposeResponse method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateGetBankStatementEntryPurposeResponseForArrayConstraintsFromSetGetBankStatementEntryPurposeResponse(array $values = []): string
+    public static function validateGetBankStatementEntryPurposeResponseForArrayConstraintFromSetGetBankStatementEntryPurposeResponse(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAllBankStatementEntryPurposeResponseGetBankStatementEntryPurposeResponseItem) {
@@ -69,10 +74,10 @@ class GetAllBankStatementEntryPurposeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\GetBankStatementEntryPurposeResponse[] $getBankStatementEntryPurposeResponse
      * @return \Pggns\MidocoApi\Bank\StructType\GetAllBankStatementEntryPurposeResponse
      */
-    public function setGetBankStatementEntryPurposeResponse(array $getBankStatementEntryPurposeResponse = []): self
+    public function setGetBankStatementEntryPurposeResponse(?array $getBankStatementEntryPurposeResponse = null): self
     {
         // validation for constraint: array
-        if ('' !== ($getBankStatementEntryPurposeResponseArrayErrorMessage = self::validateGetBankStatementEntryPurposeResponseForArrayConstraintsFromSetGetBankStatementEntryPurposeResponse($getBankStatementEntryPurposeResponse))) {
+        if ('' !== ($getBankStatementEntryPurposeResponseArrayErrorMessage = self::validateGetBankStatementEntryPurposeResponseForArrayConstraintFromSetGetBankStatementEntryPurposeResponse($getBankStatementEntryPurposeResponse))) {
             throw new InvalidArgumentException($getBankStatementEntryPurposeResponseArrayErrorMessage, __LINE__);
         }
         $this->GetBankStatementEntryPurposeResponse = $getBankStatementEntryPurposeResponse;

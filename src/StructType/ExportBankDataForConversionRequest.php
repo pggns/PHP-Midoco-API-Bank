@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportBankDataForConversionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportBankDataForConversionRequest extends AbstractStructBase
 {
     /**

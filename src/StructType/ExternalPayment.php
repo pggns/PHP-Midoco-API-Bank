@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Payment for a booking or an Order
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExternalPayment extends AbstractStructBase
 {
     /**
@@ -865,7 +866,7 @@ class ExternalPayment extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cc_valid_year, true), gettype($cc_valid_year)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{4})
-        if (!is_null($cc_valid_year) && !preg_match('/[0-9]{4}/', $cc_valid_year)) {
+        if (!is_null($cc_valid_year) && !preg_match('/[0-9]{4}/', (string) $cc_valid_year)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{4}/', var_export($cc_valid_year, true)), __LINE__);
         }
         $this->cc_valid_year = $this->{'cc-valid-year'} = $cc_valid_year;
@@ -892,7 +893,7 @@ class ExternalPayment extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cc_valid_month, true), gettype($cc_valid_month)), __LINE__);
         }
         // validation for constraint: pattern([0-9]{2})
-        if (!is_null($cc_valid_month) && !preg_match('/[0-9]{2}/', $cc_valid_month)) {
+        if (!is_null($cc_valid_month) && !preg_match('/[0-9]{2}/', (string) $cc_valid_month)) {
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a literal that is among the set of character sequences denoted by the regular expression /[0-9]{2}/', var_export($cc_valid_month, true)), __LINE__);
         }
         $this->cc_valid_month = $this->{'cc-valid-month'} = $cc_valid_month;

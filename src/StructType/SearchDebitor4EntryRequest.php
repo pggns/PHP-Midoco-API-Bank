@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchDebitor4EntryRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchDebitor4EntryRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBankStatementEntryPurpose StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBankStatementEntryPurpose extends BankStatemEntryPurposeDTO
 {
 }

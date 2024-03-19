@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBookingBatchResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBookingBatchResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBookingBatchResponse extends AbstractStructBase
      * - ref: MidocoManualBookingBatch
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoManualBookingBatch[]
      */
-    protected array $MidocoManualBookingBatch = [];
+    protected ?array $MidocoManualBookingBatch = null;
     /**
      * Constructor method for GetBookingBatchResponse
      * @uses GetBookingBatchResponse::setMidocoManualBookingBatch()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoManualBookingBatch[] $midocoManualBookingBatch
      */
-    public function __construct(array $midocoManualBookingBatch = [])
+    public function __construct(?array $midocoManualBookingBatch = null)
     {
         $this
             ->setMidocoManualBookingBatch($midocoManualBookingBatch);
@@ -36,18 +37,22 @@ class GetBookingBatchResponse extends AbstractStructBase
      * Get MidocoManualBookingBatch value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoManualBookingBatch[]
      */
-    public function getMidocoManualBookingBatch(): array
+    public function getMidocoManualBookingBatch(): ?array
     {
         return $this->MidocoManualBookingBatch;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoManualBookingBatch method
+     * This method is responsible for validating the value(s) passed to the setMidocoManualBookingBatch method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoManualBookingBatch method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoManualBookingBatchForArrayConstraintsFromSetMidocoManualBookingBatch(array $values = []): string
+    public static function validateMidocoManualBookingBatchForArrayConstraintFromSetMidocoManualBookingBatch(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBookingBatchResponseMidocoManualBookingBatchItem) {
@@ -69,10 +74,10 @@ class GetBookingBatchResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoManualBookingBatch[] $midocoManualBookingBatch
      * @return \Pggns\MidocoApi\Bank\StructType\GetBookingBatchResponse
      */
-    public function setMidocoManualBookingBatch(array $midocoManualBookingBatch = []): self
+    public function setMidocoManualBookingBatch(?array $midocoManualBookingBatch = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoManualBookingBatchArrayErrorMessage = self::validateMidocoManualBookingBatchForArrayConstraintsFromSetMidocoManualBookingBatch($midocoManualBookingBatch))) {
+        if ('' !== ($midocoManualBookingBatchArrayErrorMessage = self::validateMidocoManualBookingBatchForArrayConstraintFromSetMidocoManualBookingBatch($midocoManualBookingBatch))) {
             throw new InvalidArgumentException($midocoManualBookingBatchArrayErrorMessage, __LINE__);
         }
         $this->MidocoManualBookingBatch = $midocoManualBookingBatch;

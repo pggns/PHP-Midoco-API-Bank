@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAllBankStatementsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAllBankStatementsRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class GetAllBankStatementsRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $bookingDate = [];
+    protected ?array $bookingDate = null;
     /**
      * The accountNo
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class GetAllBankStatementsRequest extends AbstractStructBase
      * @param string[] $bookingDate
      * @param string $accountNo
      */
-    public function __construct(array $bookingDate = [], ?string $accountNo = null)
+    public function __construct(?array $bookingDate = null, ?string $accountNo = null)
     {
         $this
             ->setBookingDate($bookingDate)
@@ -45,18 +46,22 @@ class GetAllBankStatementsRequest extends AbstractStructBase
      * Get bookingDate value
      * @return string[]
      */
-    public function getBookingDate(): array
+    public function getBookingDate(): ?array
     {
         return $this->bookingDate;
     }
     /**
-     * This method is responsible for validating the values passed to the setBookingDate method
+     * This method is responsible for validating the value(s) passed to the setBookingDate method
      * This method is willingly generated in order to preserve the one-line inline validation within the setBookingDate method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateBookingDateForArrayConstraintsFromSetBookingDate(array $values = []): string
+    public static function validateBookingDateForArrayConstraintFromSetBookingDate(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAllBankStatementsRequestBookingDateItem) {
@@ -78,10 +83,10 @@ class GetAllBankStatementsRequest extends AbstractStructBase
      * @param string[] $bookingDate
      * @return \Pggns\MidocoApi\Bank\StructType\GetAllBankStatementsRequest
      */
-    public function setBookingDate(array $bookingDate = []): self
+    public function setBookingDate(?array $bookingDate = null): self
     {
         // validation for constraint: array
-        if ('' !== ($bookingDateArrayErrorMessage = self::validateBookingDateForArrayConstraintsFromSetBookingDate($bookingDate))) {
+        if ('' !== ($bookingDateArrayErrorMessage = self::validateBookingDateForArrayConstraintFromSetBookingDate($bookingDate))) {
             throw new InvalidArgumentException($bookingDateArrayErrorMessage, __LINE__);
         }
         $this->bookingDate = $bookingDate;

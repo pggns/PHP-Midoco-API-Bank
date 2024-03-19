@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportBookingJournalsDataResult StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportBookingJournalsDataResult extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ImportBookingJournalsDataResult extends AbstractStructBase
      * - ref: system:MidocoFault
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoFaultType[]
      */
-    protected array $MidocoFault = [];
+    protected ?array $MidocoFault = null;
     /**
      * The ImportBookingJournalsData
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class ImportBookingJournalsDataResult extends AbstractStructBase
      * - ref: ImportBookingJournalsData
      * @var \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData[]
      */
-    protected array $ImportBookingJournalsData = [];
+    protected ?array $ImportBookingJournalsData = null;
     /**
      * Constructor method for ImportBookingJournalsDataResult
      * @uses ImportBookingJournalsDataResult::setMidocoFault()
@@ -38,7 +39,7 @@ class ImportBookingJournalsDataResult extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoFaultType[] $midocoFault
      * @param \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData[] $importBookingJournalsData
      */
-    public function __construct(array $midocoFault = [], array $importBookingJournalsData = [])
+    public function __construct(?array $midocoFault = null, ?array $importBookingJournalsData = null)
     {
         $this
             ->setMidocoFault($midocoFault)
@@ -48,18 +49,22 @@ class ImportBookingJournalsDataResult extends AbstractStructBase
      * Get MidocoFault value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoFaultType[]
      */
-    public function getMidocoFault(): array
+    public function getMidocoFault(): ?array
     {
         return $this->MidocoFault;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoFault method
+     * This method is responsible for validating the value(s) passed to the setMidocoFault method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoFault method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoFaultForArrayConstraintsFromSetMidocoFault(array $values = []): string
+    public static function validateMidocoFaultForArrayConstraintFromSetMidocoFault(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importBookingJournalsDataResultMidocoFaultItem) {
@@ -81,10 +86,10 @@ class ImportBookingJournalsDataResult extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoFaultType[] $midocoFault
      * @return \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsDataResult
      */
-    public function setMidocoFault(array $midocoFault = []): self
+    public function setMidocoFault(?array $midocoFault = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoFaultArrayErrorMessage = self::validateMidocoFaultForArrayConstraintsFromSetMidocoFault($midocoFault))) {
+        if ('' !== ($midocoFaultArrayErrorMessage = self::validateMidocoFaultForArrayConstraintFromSetMidocoFault($midocoFault))) {
             throw new InvalidArgumentException($midocoFaultArrayErrorMessage, __LINE__);
         }
         $this->MidocoFault = $midocoFault;
@@ -111,18 +116,22 @@ class ImportBookingJournalsDataResult extends AbstractStructBase
      * Get ImportBookingJournalsData value
      * @return \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData[]
      */
-    public function getImportBookingJournalsData(): array
+    public function getImportBookingJournalsData(): ?array
     {
         return $this->ImportBookingJournalsData;
     }
     /**
-     * This method is responsible for validating the values passed to the setImportBookingJournalsData method
+     * This method is responsible for validating the value(s) passed to the setImportBookingJournalsData method
      * This method is willingly generated in order to preserve the one-line inline validation within the setImportBookingJournalsData method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateImportBookingJournalsDataForArrayConstraintsFromSetImportBookingJournalsData(array $values = []): string
+    public static function validateImportBookingJournalsDataForArrayConstraintFromSetImportBookingJournalsData(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importBookingJournalsDataResultImportBookingJournalsDataItem) {
@@ -144,10 +153,10 @@ class ImportBookingJournalsDataResult extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData[] $importBookingJournalsData
      * @return \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsDataResult
      */
-    public function setImportBookingJournalsData(array $importBookingJournalsData = []): self
+    public function setImportBookingJournalsData(?array $importBookingJournalsData = null): self
     {
         // validation for constraint: array
-        if ('' !== ($importBookingJournalsDataArrayErrorMessage = self::validateImportBookingJournalsDataForArrayConstraintsFromSetImportBookingJournalsData($importBookingJournalsData))) {
+        if ('' !== ($importBookingJournalsDataArrayErrorMessage = self::validateImportBookingJournalsDataForArrayConstraintFromSetImportBookingJournalsData($importBookingJournalsData))) {
             throw new InvalidArgumentException($importBookingJournalsDataArrayErrorMessage, __LINE__);
         }
         $this->ImportBookingJournalsData = $importBookingJournalsData;

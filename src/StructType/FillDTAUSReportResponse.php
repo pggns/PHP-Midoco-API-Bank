@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for FillDTAUSReportResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class FillDTAUSReportResponse extends AbstractStructBase
 {
     /**

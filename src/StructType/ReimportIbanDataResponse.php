@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ReimportIbanDataResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ReimportIbanDataResponse extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class ReimportIbanDataResponse extends AbstractStructBase
      * - ref: IBANImportExport
      * @var \Pggns\MidocoApi\Bank\StructType\IBANImportExport[]
      */
-    protected array $IBANImportExport = [];
+    protected ?array $IBANImportExport = null;
     /**
      * Constructor method for ReimportIbanDataResponse
      * @uses ReimportIbanDataResponse::setIBANImportExport()
      * @param \Pggns\MidocoApi\Bank\StructType\IBANImportExport[] $iBANImportExport
      */
-    public function __construct(array $iBANImportExport = [])
+    public function __construct(?array $iBANImportExport = null)
     {
         $this
             ->setIBANImportExport($iBANImportExport);
@@ -35,18 +36,22 @@ class ReimportIbanDataResponse extends AbstractStructBase
      * Get IBANImportExport value
      * @return \Pggns\MidocoApi\Bank\StructType\IBANImportExport[]
      */
-    public function getIBANImportExport(): array
+    public function getIBANImportExport(): ?array
     {
         return $this->IBANImportExport;
     }
     /**
-     * This method is responsible for validating the values passed to the setIBANImportExport method
+     * This method is responsible for validating the value(s) passed to the setIBANImportExport method
      * This method is willingly generated in order to preserve the one-line inline validation within the setIBANImportExport method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateIBANImportExportForArrayConstraintsFromSetIBANImportExport(array $values = []): string
+    public static function validateIBANImportExportForArrayConstraintFromSetIBANImportExport(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $reimportIbanDataResponseIBANImportExportItem) {
@@ -68,10 +73,10 @@ class ReimportIbanDataResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\IBANImportExport[] $iBANImportExport
      * @return \Pggns\MidocoApi\Bank\StructType\ReimportIbanDataResponse
      */
-    public function setIBANImportExport(array $iBANImportExport = []): self
+    public function setIBANImportExport(?array $iBANImportExport = null): self
     {
         // validation for constraint: array
-        if ('' !== ($iBANImportExportArrayErrorMessage = self::validateIBANImportExportForArrayConstraintsFromSetIBANImportExport($iBANImportExport))) {
+        if ('' !== ($iBANImportExportArrayErrorMessage = self::validateIBANImportExportForArrayConstraintFromSetIBANImportExport($iBANImportExport))) {
             throw new InvalidArgumentException($iBANImportExportArrayErrorMessage, __LINE__);
         }
         $this->IBANImportExport = $iBANImportExport;

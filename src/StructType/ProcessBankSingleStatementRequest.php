@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ProcessBankSingleStatementRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ProcessBankSingleStatementRequest extends AbstractStructBase
 {
     /**

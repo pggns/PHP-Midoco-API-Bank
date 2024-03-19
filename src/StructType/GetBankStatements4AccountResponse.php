@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBankStatements4AccountResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBankStatements4AccountResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBankStatements4AccountResponse extends AbstractStructBase
      * - ref: MidocoBankStatementEntry
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry[]
      */
-    protected array $MidocoBankStatementEntry = [];
+    protected ?array $MidocoBankStatementEntry = null;
     /**
      * Constructor method for GetBankStatements4AccountResponse
      * @uses GetBankStatements4AccountResponse::setMidocoBankStatementEntry()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry[] $midocoBankStatementEntry
      */
-    public function __construct(array $midocoBankStatementEntry = [])
+    public function __construct(?array $midocoBankStatementEntry = null)
     {
         $this
             ->setMidocoBankStatementEntry($midocoBankStatementEntry);
@@ -36,18 +37,22 @@ class GetBankStatements4AccountResponse extends AbstractStructBase
      * Get MidocoBankStatementEntry value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry[]
      */
-    public function getMidocoBankStatementEntry(): array
+    public function getMidocoBankStatementEntry(): ?array
     {
         return $this->MidocoBankStatementEntry;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementEntry method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementEntryForArrayConstraintsFromSetMidocoBankStatementEntry(array $values = []): string
+    public static function validateMidocoBankStatementEntryForArrayConstraintFromSetMidocoBankStatementEntry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBankStatements4AccountResponseMidocoBankStatementEntryItem) {
@@ -69,10 +74,10 @@ class GetBankStatements4AccountResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry[] $midocoBankStatementEntry
      * @return \Pggns\MidocoApi\Bank\StructType\GetBankStatements4AccountResponse
      */
-    public function setMidocoBankStatementEntry(array $midocoBankStatementEntry = []): self
+    public function setMidocoBankStatementEntry(?array $midocoBankStatementEntry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementEntryArrayErrorMessage = self::validateMidocoBankStatementEntryForArrayConstraintsFromSetMidocoBankStatementEntry($midocoBankStatementEntry))) {
+        if ('' !== ($midocoBankStatementEntryArrayErrorMessage = self::validateMidocoBankStatementEntryForArrayConstraintFromSetMidocoBankStatementEntry($midocoBankStatementEntry))) {
             throw new InvalidArgumentException($midocoBankStatementEntryArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementEntry = $midocoBankStatementEntry;

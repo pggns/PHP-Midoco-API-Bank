@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchCreditor4SupplierSettlementRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchCreditor4SupplierSettlementRequest extends AbstractStructBase
 {
     /**

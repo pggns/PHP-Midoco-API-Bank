@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAllNotCompletedBankStatementsResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAllNotCompletedBankStatementsResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetAllNotCompletedBankStatementsResponse extends AbstractStructBase
      * - ref: MidocoBankStatementAccountWithDiff
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementAccountWithDiff[]
      */
-    protected array $MidocoBankStatementAccountWithDiff = [];
+    protected ?array $MidocoBankStatementAccountWithDiff = null;
     /**
      * Constructor method for GetAllNotCompletedBankStatementsResponse
      * @uses GetAllNotCompletedBankStatementsResponse::setMidocoBankStatementAccountWithDiff()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementAccountWithDiff[] $midocoBankStatementAccountWithDiff
      */
-    public function __construct(array $midocoBankStatementAccountWithDiff = [])
+    public function __construct(?array $midocoBankStatementAccountWithDiff = null)
     {
         $this
             ->setMidocoBankStatementAccountWithDiff($midocoBankStatementAccountWithDiff);
@@ -36,18 +37,22 @@ class GetAllNotCompletedBankStatementsResponse extends AbstractStructBase
      * Get MidocoBankStatementAccountWithDiff value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementAccountWithDiff[]
      */
-    public function getMidocoBankStatementAccountWithDiff(): array
+    public function getMidocoBankStatementAccountWithDiff(): ?array
     {
         return $this->MidocoBankStatementAccountWithDiff;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementAccountWithDiff method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementAccountWithDiff method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementAccountWithDiff method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementAccountWithDiffForArrayConstraintsFromSetMidocoBankStatementAccountWithDiff(array $values = []): string
+    public static function validateMidocoBankStatementAccountWithDiffForArrayConstraintFromSetMidocoBankStatementAccountWithDiff(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getAllNotCompletedBankStatementsResponseMidocoBankStatementAccountWithDiffItem) {
@@ -69,10 +74,10 @@ class GetAllNotCompletedBankStatementsResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementAccountWithDiff[] $midocoBankStatementAccountWithDiff
      * @return \Pggns\MidocoApi\Bank\StructType\GetAllNotCompletedBankStatementsResponse
      */
-    public function setMidocoBankStatementAccountWithDiff(array $midocoBankStatementAccountWithDiff = []): self
+    public function setMidocoBankStatementAccountWithDiff(?array $midocoBankStatementAccountWithDiff = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementAccountWithDiffArrayErrorMessage = self::validateMidocoBankStatementAccountWithDiffForArrayConstraintsFromSetMidocoBankStatementAccountWithDiff($midocoBankStatementAccountWithDiff))) {
+        if ('' !== ($midocoBankStatementAccountWithDiffArrayErrorMessage = self::validateMidocoBankStatementAccountWithDiffForArrayConstraintFromSetMidocoBankStatementAccountWithDiff($midocoBankStatementAccountWithDiff))) {
             throw new InvalidArgumentException($midocoBankStatementAccountWithDiffArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementAccountWithDiff = $midocoBankStatementAccountWithDiff;

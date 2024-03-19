@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEntryRestAsProvResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEntryRestAsProvResponse extends AbstractStructBase
 {
     /**

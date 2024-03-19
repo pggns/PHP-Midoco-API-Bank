@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteBankStatementEntryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBankStatementEntryResponse extends AbstractStructBase
 {
 }

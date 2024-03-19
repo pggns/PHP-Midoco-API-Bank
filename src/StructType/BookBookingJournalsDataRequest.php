@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for BookBookingJournalsDataRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class BookBookingJournalsDataRequest extends AbstractStructBase
 {
     /**
@@ -20,13 +21,13 @@ class BookBookingJournalsDataRequest extends AbstractStructBase
      * - ref: ImportBookingJournalsData
      * @var \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData[]
      */
-    protected array $ImportBookingJournalsData = [];
+    protected ?array $ImportBookingJournalsData = null;
     /**
      * Constructor method for BookBookingJournalsDataRequest
      * @uses BookBookingJournalsDataRequest::setImportBookingJournalsData()
      * @param \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData[] $importBookingJournalsData
      */
-    public function __construct(array $importBookingJournalsData = [])
+    public function __construct(?array $importBookingJournalsData = null)
     {
         $this
             ->setImportBookingJournalsData($importBookingJournalsData);
@@ -35,18 +36,22 @@ class BookBookingJournalsDataRequest extends AbstractStructBase
      * Get ImportBookingJournalsData value
      * @return \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData[]
      */
-    public function getImportBookingJournalsData(): array
+    public function getImportBookingJournalsData(): ?array
     {
         return $this->ImportBookingJournalsData;
     }
     /**
-     * This method is responsible for validating the values passed to the setImportBookingJournalsData method
+     * This method is responsible for validating the value(s) passed to the setImportBookingJournalsData method
      * This method is willingly generated in order to preserve the one-line inline validation within the setImportBookingJournalsData method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateImportBookingJournalsDataForArrayConstraintsFromSetImportBookingJournalsData(array $values = []): string
+    public static function validateImportBookingJournalsDataForArrayConstraintFromSetImportBookingJournalsData(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $bookBookingJournalsDataRequestImportBookingJournalsDataItem) {
@@ -68,10 +73,10 @@ class BookBookingJournalsDataRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData[] $importBookingJournalsData
      * @return \Pggns\MidocoApi\Bank\StructType\BookBookingJournalsDataRequest
      */
-    public function setImportBookingJournalsData(array $importBookingJournalsData = []): self
+    public function setImportBookingJournalsData(?array $importBookingJournalsData = null): self
     {
         // validation for constraint: array
-        if ('' !== ($importBookingJournalsDataArrayErrorMessage = self::validateImportBookingJournalsDataForArrayConstraintsFromSetImportBookingJournalsData($importBookingJournalsData))) {
+        if ('' !== ($importBookingJournalsDataArrayErrorMessage = self::validateImportBookingJournalsDataForArrayConstraintFromSetImportBookingJournalsData($importBookingJournalsData))) {
             throw new InvalidArgumentException($importBookingJournalsDataArrayErrorMessage, __LINE__);
         }
         $this->ImportBookingJournalsData = $importBookingJournalsData;

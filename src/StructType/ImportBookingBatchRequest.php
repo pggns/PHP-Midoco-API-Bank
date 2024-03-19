@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportBookingBatchRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportBookingBatchRequest extends AbstractStructBase
 {
     /**
@@ -36,7 +37,7 @@ class ImportBookingBatchRequest extends AbstractStructBase
      * - ref: MidocoManualBatchProtocolType
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoManualBatchProtocolType[]
      */
-    protected array $MidocoManualBatchProtocolType = [];
+    protected ?array $MidocoManualBatchProtocolType = null;
     /**
      * Constructor method for ImportBookingBatchRequest
      * @uses ImportBookingBatchRequest::setStream()
@@ -48,7 +49,7 @@ class ImportBookingBatchRequest extends AbstractStructBase
      * @param string $fileName
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoManualBatchProtocolType[] $midocoManualBatchProtocolType
      */
-    public function __construct(?string $stream = null, ?string $fileFormat = null, ?string $fileName = null, array $midocoManualBatchProtocolType = [])
+    public function __construct(?string $stream = null, ?string $fileFormat = null, ?string $fileName = null, ?array $midocoManualBatchProtocolType = null)
     {
         $this
             ->setStream($stream)
@@ -129,18 +130,22 @@ class ImportBookingBatchRequest extends AbstractStructBase
      * Get MidocoManualBatchProtocolType value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoManualBatchProtocolType[]
      */
-    public function getMidocoManualBatchProtocolType(): array
+    public function getMidocoManualBatchProtocolType(): ?array
     {
         return $this->MidocoManualBatchProtocolType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoManualBatchProtocolType method
+     * This method is responsible for validating the value(s) passed to the setMidocoManualBatchProtocolType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoManualBatchProtocolType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoManualBatchProtocolTypeForArrayConstraintsFromSetMidocoManualBatchProtocolType(array $values = []): string
+    public static function validateMidocoManualBatchProtocolTypeForArrayConstraintFromSetMidocoManualBatchProtocolType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importBookingBatchRequestMidocoManualBatchProtocolTypeItem) {
@@ -162,10 +167,10 @@ class ImportBookingBatchRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoManualBatchProtocolType[] $midocoManualBatchProtocolType
      * @return \Pggns\MidocoApi\Bank\StructType\ImportBookingBatchRequest
      */
-    public function setMidocoManualBatchProtocolType(array $midocoManualBatchProtocolType = []): self
+    public function setMidocoManualBatchProtocolType(?array $midocoManualBatchProtocolType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoManualBatchProtocolTypeArrayErrorMessage = self::validateMidocoManualBatchProtocolTypeForArrayConstraintsFromSetMidocoManualBatchProtocolType($midocoManualBatchProtocolType))) {
+        if ('' !== ($midocoManualBatchProtocolTypeArrayErrorMessage = self::validateMidocoManualBatchProtocolTypeForArrayConstraintFromSetMidocoManualBatchProtocolType($midocoManualBatchProtocolType))) {
             throw new InvalidArgumentException($midocoManualBatchProtocolTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoManualBatchProtocolType = $midocoManualBatchProtocolType;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for IBANImportExport StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class IBANImportExport extends AbstractStructBase
 {
     /**

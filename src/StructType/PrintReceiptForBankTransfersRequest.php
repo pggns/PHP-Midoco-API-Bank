@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintReceiptForBankTransfersRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintReceiptForBankTransfersRequest extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class PrintReceiptForBankTransfersRequest extends AbstractStructBase
      * - minOccurs: 0
      * @var int[]
      */
-    protected array $statementId = [];
+    protected ?array $statementId = null;
     /**
      * The PrintReceiptForBankTransfersType
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class PrintReceiptForBankTransfersRequest extends AbstractStructBase
      * @param int[] $statementId
      * @param \Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersType $printReceiptForBankTransfersType
      */
-    public function __construct(array $statementId = [], ?\Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersType $printReceiptForBankTransfersType = null)
+    public function __construct(?array $statementId = null, ?\Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersType $printReceiptForBankTransfersType = null)
     {
         $this
             ->setStatementId($statementId)
@@ -45,18 +46,22 @@ class PrintReceiptForBankTransfersRequest extends AbstractStructBase
      * Get statementId value
      * @return int[]
      */
-    public function getStatementId(): array
+    public function getStatementId(): ?array
     {
         return $this->statementId;
     }
     /**
-     * This method is responsible for validating the values passed to the setStatementId method
+     * This method is responsible for validating the value(s) passed to the setStatementId method
      * This method is willingly generated in order to preserve the one-line inline validation within the setStatementId method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateStatementIdForArrayConstraintsFromSetStatementId(array $values = []): string
+    public static function validateStatementIdForArrayConstraintFromSetStatementId(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printReceiptForBankTransfersRequestStatementIdItem) {
@@ -78,10 +83,10 @@ class PrintReceiptForBankTransfersRequest extends AbstractStructBase
      * @param int[] $statementId
      * @return \Pggns\MidocoApi\Bank\StructType\PrintReceiptForBankTransfersRequest
      */
-    public function setStatementId(array $statementId = []): self
+    public function setStatementId(?array $statementId = null): self
     {
         // validation for constraint: array
-        if ('' !== ($statementIdArrayErrorMessage = self::validateStatementIdForArrayConstraintsFromSetStatementId($statementId))) {
+        if ('' !== ($statementIdArrayErrorMessage = self::validateStatementIdForArrayConstraintFromSetStatementId($statementId))) {
             throw new InvalidArgumentException($statementIdArrayErrorMessage, __LINE__);
         }
         $this->statementId = $statementId;

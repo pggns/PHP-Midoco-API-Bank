@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBankCache StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBankCache extends BankCacheDTO
 {
     /**
@@ -21,7 +22,7 @@ class MidocoBankCache extends BankCacheDTO
      * - ref: MidocoBankCachePosition
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankCachePosition[]
      */
-    protected array $MidocoBankCachePosition = [];
+    protected ?array $MidocoBankCachePosition = null;
     /**
      * The isCharge
      * Meta information extracted from the WSDL
@@ -43,7 +44,7 @@ class MidocoBankCache extends BankCacheDTO
      * @param bool $isCharge
      * @param float $amount
      */
-    public function __construct(array $midocoBankCachePosition = [], ?bool $isCharge = false, ?float $amount = null)
+    public function __construct(?array $midocoBankCachePosition = null, ?bool $isCharge = false, ?float $amount = null)
     {
         $this
             ->setMidocoBankCachePosition($midocoBankCachePosition)
@@ -54,18 +55,22 @@ class MidocoBankCache extends BankCacheDTO
      * Get MidocoBankCachePosition value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankCachePosition[]
      */
-    public function getMidocoBankCachePosition(): array
+    public function getMidocoBankCachePosition(): ?array
     {
         return $this->MidocoBankCachePosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankCachePosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankCachePosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankCachePosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankCachePositionForArrayConstraintsFromSetMidocoBankCachePosition(array $values = []): string
+    public static function validateMidocoBankCachePositionForArrayConstraintFromSetMidocoBankCachePosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBankCacheMidocoBankCachePositionItem) {
@@ -87,10 +92,10 @@ class MidocoBankCache extends BankCacheDTO
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankCachePosition[] $midocoBankCachePosition
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankCache
      */
-    public function setMidocoBankCachePosition(array $midocoBankCachePosition = []): self
+    public function setMidocoBankCachePosition(?array $midocoBankCachePosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankCachePositionArrayErrorMessage = self::validateMidocoBankCachePositionForArrayConstraintsFromSetMidocoBankCachePosition($midocoBankCachePosition))) {
+        if ('' !== ($midocoBankCachePositionArrayErrorMessage = self::validateMidocoBankCachePositionForArrayConstraintFromSetMidocoBankCachePosition($midocoBankCachePosition))) {
             throw new InvalidArgumentException($midocoBankCachePositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankCachePosition = $midocoBankCachePosition;

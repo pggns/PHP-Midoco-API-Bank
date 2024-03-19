@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetEntryResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetEntryResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetEntryResponse extends AbstractStructBase
      * - ref: MidocoEntry
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoEntry[]
      */
-    protected array $MidocoEntry = [];
+    protected ?array $MidocoEntry = null;
     /**
      * Constructor method for GetEntryResponse
      * @uses GetEntryResponse::setMidocoEntry()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoEntry[] $midocoEntry
      */
-    public function __construct(array $midocoEntry = [])
+    public function __construct(?array $midocoEntry = null)
     {
         $this
             ->setMidocoEntry($midocoEntry);
@@ -36,18 +37,22 @@ class GetEntryResponse extends AbstractStructBase
      * Get MidocoEntry value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoEntry[]
      */
-    public function getMidocoEntry(): array
+    public function getMidocoEntry(): ?array
     {
         return $this->MidocoEntry;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoEntry method
+     * This method is responsible for validating the value(s) passed to the setMidocoEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoEntryForArrayConstraintsFromSetMidocoEntry(array $values = []): string
+    public static function validateMidocoEntryForArrayConstraintFromSetMidocoEntry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getEntryResponseMidocoEntryItem) {
@@ -69,10 +74,10 @@ class GetEntryResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoEntry[] $midocoEntry
      * @return \Pggns\MidocoApi\Bank\StructType\GetEntryResponse
      */
-    public function setMidocoEntry(array $midocoEntry = []): self
+    public function setMidocoEntry(?array $midocoEntry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoEntryArrayErrorMessage = self::validateMidocoEntryForArrayConstraintsFromSetMidocoEntry($midocoEntry))) {
+        if ('' !== ($midocoEntryArrayErrorMessage = self::validateMidocoEntryForArrayConstraintFromSetMidocoEntry($midocoEntry))) {
             throw new InvalidArgumentException($midocoEntryArrayErrorMessage, __LINE__);
         }
         $this->MidocoEntry = $midocoEntry;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoManualBatchProtocolType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoManualBatchProtocolType extends AbstractStructBase
 {
     /**

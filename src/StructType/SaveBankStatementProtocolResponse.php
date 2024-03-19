@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: SaveBankStatementProtocol --- saves or updates a BankStatementProtocol, returns it's protocolId
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBankStatementProtocolResponse extends AbstractStructBase
 {
     /**

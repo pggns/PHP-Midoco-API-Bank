@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveBankCachePositionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBankCachePositionRequest extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SaveBankCachePositionRequest extends AbstractStructBase
      * - ref: MidocoBankCachePosition
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankCachePosition[]
      */
-    protected array $MidocoBankCachePosition = [];
+    protected ?array $MidocoBankCachePosition = null;
     /**
      * Constructor method for SaveBankCachePositionRequest
      * @uses SaveBankCachePositionRequest::setMidocoBankCachePosition()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankCachePosition[] $midocoBankCachePosition
      */
-    public function __construct(array $midocoBankCachePosition = [])
+    public function __construct(?array $midocoBankCachePosition = null)
     {
         $this
             ->setMidocoBankCachePosition($midocoBankCachePosition);
@@ -36,18 +37,22 @@ class SaveBankCachePositionRequest extends AbstractStructBase
      * Get MidocoBankCachePosition value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankCachePosition[]
      */
-    public function getMidocoBankCachePosition(): array
+    public function getMidocoBankCachePosition(): ?array
     {
         return $this->MidocoBankCachePosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankCachePosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankCachePosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankCachePosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankCachePositionForArrayConstraintsFromSetMidocoBankCachePosition(array $values = []): string
+    public static function validateMidocoBankCachePositionForArrayConstraintFromSetMidocoBankCachePosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $saveBankCachePositionRequestMidocoBankCachePositionItem) {
@@ -69,10 +74,10 @@ class SaveBankCachePositionRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankCachePosition[] $midocoBankCachePosition
      * @return \Pggns\MidocoApi\Bank\StructType\SaveBankCachePositionRequest
      */
-    public function setMidocoBankCachePosition(array $midocoBankCachePosition = []): self
+    public function setMidocoBankCachePosition(?array $midocoBankCachePosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankCachePositionArrayErrorMessage = self::validateMidocoBankCachePositionForArrayConstraintsFromSetMidocoBankCachePosition($midocoBankCachePosition))) {
+        if ('' !== ($midocoBankCachePositionArrayErrorMessage = self::validateMidocoBankCachePositionForArrayConstraintFromSetMidocoBankCachePosition($midocoBankCachePosition))) {
             throw new InvalidArgumentException($midocoBankCachePositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankCachePosition = $midocoBankCachePosition;

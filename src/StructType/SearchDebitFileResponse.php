@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SearchDebitFileResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SearchDebitFileResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SearchDebitFileResponse extends AbstractStructBase
      * - ref: MidocoDebitFile
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoDebitFile[]
      */
-    protected array $MidocoDebitFile = [];
+    protected ?array $MidocoDebitFile = null;
     /**
      * Constructor method for SearchDebitFileResponse
      * @uses SearchDebitFileResponse::setMidocoDebitFile()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoDebitFile[] $midocoDebitFile
      */
-    public function __construct(array $midocoDebitFile = [])
+    public function __construct(?array $midocoDebitFile = null)
     {
         $this
             ->setMidocoDebitFile($midocoDebitFile);
@@ -36,18 +37,22 @@ class SearchDebitFileResponse extends AbstractStructBase
      * Get MidocoDebitFile value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoDebitFile[]
      */
-    public function getMidocoDebitFile(): array
+    public function getMidocoDebitFile(): ?array
     {
         return $this->MidocoDebitFile;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDebitFile method
+     * This method is responsible for validating the value(s) passed to the setMidocoDebitFile method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDebitFile method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDebitFileForArrayConstraintsFromSetMidocoDebitFile(array $values = []): string
+    public static function validateMidocoDebitFileForArrayConstraintFromSetMidocoDebitFile(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $searchDebitFileResponseMidocoDebitFileItem) {
@@ -69,10 +74,10 @@ class SearchDebitFileResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoDebitFile[] $midocoDebitFile
      * @return \Pggns\MidocoApi\Bank\StructType\SearchDebitFileResponse
      */
-    public function setMidocoDebitFile(array $midocoDebitFile = []): self
+    public function setMidocoDebitFile(?array $midocoDebitFile = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDebitFileArrayErrorMessage = self::validateMidocoDebitFileForArrayConstraintsFromSetMidocoDebitFile($midocoDebitFile))) {
+        if ('' !== ($midocoDebitFileArrayErrorMessage = self::validateMidocoDebitFileForArrayConstraintFromSetMidocoDebitFile($midocoDebitFile))) {
             throw new InvalidArgumentException($midocoDebitFileArrayErrorMessage, __LINE__);
         }
         $this->MidocoDebitFile = $midocoDebitFile;

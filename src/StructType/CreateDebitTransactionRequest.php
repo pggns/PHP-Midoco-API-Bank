@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateDebitTransactionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateDebitTransactionRequest extends AbstractStructBase
 {
     /**

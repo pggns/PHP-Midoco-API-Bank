@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateDtazvTransactionRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateDtazvTransactionRequest extends AbstractStructBase
 {
     /**

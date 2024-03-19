@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetSepaMandateTypesResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetSepaMandateTypesResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class GetSepaMandateTypesResponse extends AbstractStructBase
      * - minOccurs: 0
      * @var string[]
      */
-    protected array $mandateType = [];
+    protected ?array $mandateType = null;
     /**
      * The defaultMandateType
      * @var string|null
@@ -33,7 +34,7 @@ class GetSepaMandateTypesResponse extends AbstractStructBase
      * @param string[] $mandateType
      * @param string $defaultMandateType
      */
-    public function __construct(array $mandateType = [], ?string $defaultMandateType = null)
+    public function __construct(?array $mandateType = null, ?string $defaultMandateType = null)
     {
         $this
             ->setMandateType($mandateType)
@@ -43,18 +44,22 @@ class GetSepaMandateTypesResponse extends AbstractStructBase
      * Get mandateType value
      * @return string[]
      */
-    public function getMandateType(): array
+    public function getMandateType(): ?array
     {
         return $this->mandateType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMandateType method
+     * This method is responsible for validating the value(s) passed to the setMandateType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMandateType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMandateTypeForArrayConstraintsFromSetMandateType(array $values = []): string
+    public static function validateMandateTypeForArrayConstraintFromSetMandateType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getSepaMandateTypesResponseMandateTypeItem) {
@@ -76,10 +81,10 @@ class GetSepaMandateTypesResponse extends AbstractStructBase
      * @param string[] $mandateType
      * @return \Pggns\MidocoApi\Bank\StructType\GetSepaMandateTypesResponse
      */
-    public function setMandateType(array $mandateType = []): self
+    public function setMandateType(?array $mandateType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($mandateTypeArrayErrorMessage = self::validateMandateTypeForArrayConstraintsFromSetMandateType($mandateType))) {
+        if ('' !== ($mandateTypeArrayErrorMessage = self::validateMandateTypeForArrayConstraintFromSetMandateType($mandateType))) {
             throw new InvalidArgumentException($mandateTypeArrayErrorMessage, __LINE__);
         }
         $this->mandateType = $mandateType;

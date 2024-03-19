@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportBookingJournalsData StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportBookingJournalsData extends AbstractStructBase
 {
     /**
@@ -64,6 +65,13 @@ class ImportBookingJournalsData extends AbstractStructBase
      */
     protected ?string $bookingText = null;
     /**
+     * The vatCode
+     * Meta information extracted from the WSDL
+     * - documentation: This VAT code can be used to supply a VAT code like MVoll, MHalb, MNull, VVoll, VHalb, VNull and so on. It does not override the VAT code given in the master data unless the master data VAT code is MWahl or VWahl.
+     * @var string|null
+     */
+    protected ?string $vatCode = null;
+    /**
      * Constructor method for ImportBookingJournalsData
      * @uses ImportBookingJournalsData::setReceiptDate()
      * @uses ImportBookingJournalsData::setReceiptNo()
@@ -75,6 +83,7 @@ class ImportBookingJournalsData extends AbstractStructBase
      * @uses ImportBookingJournalsData::setCreditEntry()
      * @uses ImportBookingJournalsData::setJournalType()
      * @uses ImportBookingJournalsData::setBookingText()
+     * @uses ImportBookingJournalsData::setVatCode()
      * @param string $receiptDate
      * @param string $receiptNo
      * @param float $bookingAmount
@@ -85,8 +94,9 @@ class ImportBookingJournalsData extends AbstractStructBase
      * @param string $creditEntry
      * @param string $journalType
      * @param string $bookingText
+     * @param string $vatCode
      */
-    public function __construct(?string $receiptDate = null, ?string $receiptNo = null, ?float $bookingAmount = null, ?string $debitAccount = null, ?string $creditAccount = null, ?string $costCentre = null, ?string $debitEntry = null, ?string $creditEntry = null, ?string $journalType = null, ?string $bookingText = null)
+    public function __construct(?string $receiptDate = null, ?string $receiptNo = null, ?float $bookingAmount = null, ?string $debitAccount = null, ?string $creditAccount = null, ?string $costCentre = null, ?string $debitEntry = null, ?string $creditEntry = null, ?string $journalType = null, ?string $bookingText = null, ?string $vatCode = null)
     {
         $this
             ->setReceiptDate($receiptDate)
@@ -98,7 +108,8 @@ class ImportBookingJournalsData extends AbstractStructBase
             ->setDebitEntry($debitEntry)
             ->setCreditEntry($creditEntry)
             ->setJournalType($journalType)
-            ->setBookingText($bookingText);
+            ->setBookingText($bookingText)
+            ->setVatCode($vatCode);
     }
     /**
      * Get receiptDate value
@@ -327,6 +338,29 @@ class ImportBookingJournalsData extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($bookingText, true), gettype($bookingText)), __LINE__);
         }
         $this->bookingText = $bookingText;
+        
+        return $this;
+    }
+    /**
+     * Get vatCode value
+     * @return string|null
+     */
+    public function getVatCode(): ?string
+    {
+        return $this->vatCode;
+    }
+    /**
+     * Set vatCode value
+     * @param string $vatCode
+     * @return \Pggns\MidocoApi\Bank\StructType\ImportBookingJournalsData
+     */
+    public function setVatCode(?string $vatCode = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($vatCode) && !is_string($vatCode)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($vatCode, true), gettype($vatCode)), __LINE__);
+        }
+        $this->vatCode = $vatCode;
         
         return $this;
     }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoEntry StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoEntry extends EntryDTO
 {
     /**

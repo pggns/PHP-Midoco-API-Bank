@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportBookingBatchResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportBookingBatchResponse extends AbstractStructBase
 {
     /**

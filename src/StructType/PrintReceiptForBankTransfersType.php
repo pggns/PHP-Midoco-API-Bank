@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for PrintReceiptForBankTransfersType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class PrintReceiptForBankTransfersType extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class PrintReceiptForBankTransfersType extends AbstractStructBase
      * - minOccurs: 1
      * @var int[]
      */
-    protected array $journalPosition = [];
+    protected array $journalPosition;
     /**
      * The statementId
      * @var int|null
@@ -72,13 +73,17 @@ class PrintReceiptForBankTransfersType extends AbstractStructBase
         return $this->journalPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setJournalPosition method
+     * This method is responsible for validating the value(s) passed to the setJournalPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setJournalPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateJournalPositionForArrayConstraintsFromSetJournalPosition(array $values = []): string
+    public static function validateJournalPositionForArrayConstraintFromSetJournalPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $printReceiptForBankTransfersTypeJournalPositionItem) {
@@ -103,7 +108,7 @@ class PrintReceiptForBankTransfersType extends AbstractStructBase
     public function setJournalPosition(array $journalPosition): self
     {
         // validation for constraint: array
-        if ('' !== ($journalPositionArrayErrorMessage = self::validateJournalPositionForArrayConstraintsFromSetJournalPosition($journalPosition))) {
+        if ('' !== ($journalPositionArrayErrorMessage = self::validateJournalPositionForArrayConstraintFromSetJournalPosition($journalPosition))) {
             throw new InvalidArgumentException($journalPositionArrayErrorMessage, __LINE__);
         }
         $this->journalPosition = $journalPosition;

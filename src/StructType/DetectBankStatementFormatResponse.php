@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DetectBankStatementFormatResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DetectBankStatementFormatResponse extends AbstractStructBase
 {
     /**

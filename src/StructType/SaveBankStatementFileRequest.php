@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SaveBankStatementFileRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SaveBankStatementFileRequest extends AbstractStructBase
 {
     /**

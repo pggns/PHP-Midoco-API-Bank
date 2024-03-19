@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CollectBankPaymentPositionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CollectBankPaymentPositionsRequest extends AbstractStructBase
 {
     /**
@@ -60,7 +61,7 @@ class CollectBankPaymentPositionsRequest extends AbstractStructBase
      * - ref: SepaTransactionType
      * @var string[]
      */
-    protected array $SepaTransactionType = [];
+    protected ?array $SepaTransactionType = null;
     /**
      * The creditorSelected
      * @var bool|null
@@ -131,7 +132,7 @@ class CollectBankPaymentPositionsRequest extends AbstractStructBase
      * @param string $debitorTo
      * @param string $mediatorId
      */
-    public function __construct(?string $accountNo = null, ?string $accountBlz = null, ?string $accountCountry = null, ?string $iban = null, ?string $swiftBicCode = null, ?string $perDate = null, ?int $paymentType = null, ?int $debitType = null, array $sepaTransactionType = [], ?bool $creditorSelected = null, ?string $creditorFrom = null, ?string $creditorTo = null, ?bool $debitorSelected = null, ?string $debitorFrom = null, ?string $debitorTo = null, ?string $mediatorId = null)
+    public function __construct(?string $accountNo = null, ?string $accountBlz = null, ?string $accountCountry = null, ?string $iban = null, ?string $swiftBicCode = null, ?string $perDate = null, ?int $paymentType = null, ?int $debitType = null, ?array $sepaTransactionType = null, ?bool $creditorSelected = null, ?string $creditorFrom = null, ?string $creditorTo = null, ?bool $debitorSelected = null, ?string $debitorFrom = null, ?string $debitorTo = null, ?string $mediatorId = null)
     {
         $this
             ->setAccountNo($accountNo)
@@ -339,18 +340,22 @@ class CollectBankPaymentPositionsRequest extends AbstractStructBase
      * Get SepaTransactionType value
      * @return string[]
      */
-    public function getSepaTransactionType(): array
+    public function getSepaTransactionType(): ?array
     {
         return $this->SepaTransactionType;
     }
     /**
-     * This method is responsible for validating the values passed to the setSepaTransactionType method
+     * This method is responsible for validating the value(s) passed to the setSepaTransactionType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setSepaTransactionType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateSepaTransactionTypeForArrayConstraintsFromSetSepaTransactionType(array $values = []): string
+    public static function validateSepaTransactionTypeForArrayConstraintFromSetSepaTransactionType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $collectBankPaymentPositionsRequestSepaTransactionTypeItem) {
@@ -374,10 +379,10 @@ class CollectBankPaymentPositionsRequest extends AbstractStructBase
      * @param string[] $sepaTransactionType
      * @return \Pggns\MidocoApi\Bank\StructType\CollectBankPaymentPositionsRequest
      */
-    public function setSepaTransactionType(array $sepaTransactionType = []): self
+    public function setSepaTransactionType(?array $sepaTransactionType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($sepaTransactionTypeArrayErrorMessage = self::validateSepaTransactionTypeForArrayConstraintsFromSetSepaTransactionType($sepaTransactionType))) {
+        if ('' !== ($sepaTransactionTypeArrayErrorMessage = self::validateSepaTransactionTypeForArrayConstraintFromSetSepaTransactionType($sepaTransactionType))) {
             throw new InvalidArgumentException($sepaTransactionTypeArrayErrorMessage, __LINE__);
         }
         $this->SepaTransactionType = $sepaTransactionType;

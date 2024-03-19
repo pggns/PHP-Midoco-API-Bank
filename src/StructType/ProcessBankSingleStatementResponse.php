@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ProcessBankSingleStatementResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ProcessBankSingleStatementResponse extends AbstractStructBase
 {
     /**
@@ -26,7 +27,7 @@ class ProcessBankSingleStatementResponse extends AbstractStructBase
      * - ref: MidocoBankBookingJournal
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[]
      */
-    protected array $MidocoBankBookingJournal = [];
+    protected ?array $MidocoBankBookingJournal = null;
     /**
      * The MidocoBankProcessProtocolType
      * Meta information extracted from the WSDL
@@ -35,7 +36,7 @@ class ProcessBankSingleStatementResponse extends AbstractStructBase
      * - ref: MidocoBankProcessProtocolType
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankProcessProtocolType[]
      */
-    protected array $MidocoBankProcessProtocolType = [];
+    protected ?array $MidocoBankProcessProtocolType = null;
     /**
      * Constructor method for ProcessBankSingleStatementResponse
      * @uses ProcessBankSingleStatementResponse::setAssigned()
@@ -45,7 +46,7 @@ class ProcessBankSingleStatementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[] $midocoBankBookingJournal
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankProcessProtocolType[] $midocoBankProcessProtocolType
      */
-    public function __construct(?bool $assigned = null, array $midocoBankBookingJournal = [], array $midocoBankProcessProtocolType = [])
+    public function __construct(?bool $assigned = null, ?array $midocoBankBookingJournal = null, ?array $midocoBankProcessProtocolType = null)
     {
         $this
             ->setAssigned($assigned)
@@ -79,18 +80,22 @@ class ProcessBankSingleStatementResponse extends AbstractStructBase
      * Get MidocoBankBookingJournal value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[]
      */
-    public function getMidocoBankBookingJournal(): array
+    public function getMidocoBankBookingJournal(): ?array
     {
         return $this->MidocoBankBookingJournal;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankBookingJournal method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankBookingJournal method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankBookingJournal method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankBookingJournalForArrayConstraintsFromSetMidocoBankBookingJournal(array $values = []): string
+    public static function validateMidocoBankBookingJournalForArrayConstraintFromSetMidocoBankBookingJournal(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $processBankSingleStatementResponseMidocoBankBookingJournalItem) {
@@ -112,10 +117,10 @@ class ProcessBankSingleStatementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[] $midocoBankBookingJournal
      * @return \Pggns\MidocoApi\Bank\StructType\ProcessBankSingleStatementResponse
      */
-    public function setMidocoBankBookingJournal(array $midocoBankBookingJournal = []): self
+    public function setMidocoBankBookingJournal(?array $midocoBankBookingJournal = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankBookingJournalArrayErrorMessage = self::validateMidocoBankBookingJournalForArrayConstraintsFromSetMidocoBankBookingJournal($midocoBankBookingJournal))) {
+        if ('' !== ($midocoBankBookingJournalArrayErrorMessage = self::validateMidocoBankBookingJournalForArrayConstraintFromSetMidocoBankBookingJournal($midocoBankBookingJournal))) {
             throw new InvalidArgumentException($midocoBankBookingJournalArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankBookingJournal = $midocoBankBookingJournal;
@@ -142,18 +147,22 @@ class ProcessBankSingleStatementResponse extends AbstractStructBase
      * Get MidocoBankProcessProtocolType value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankProcessProtocolType[]
      */
-    public function getMidocoBankProcessProtocolType(): array
+    public function getMidocoBankProcessProtocolType(): ?array
     {
         return $this->MidocoBankProcessProtocolType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankProcessProtocolType method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankProcessProtocolType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankProcessProtocolType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankProcessProtocolTypeForArrayConstraintsFromSetMidocoBankProcessProtocolType(array $values = []): string
+    public static function validateMidocoBankProcessProtocolTypeForArrayConstraintFromSetMidocoBankProcessProtocolType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $processBankSingleStatementResponseMidocoBankProcessProtocolTypeItem) {
@@ -175,10 +184,10 @@ class ProcessBankSingleStatementResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankProcessProtocolType[] $midocoBankProcessProtocolType
      * @return \Pggns\MidocoApi\Bank\StructType\ProcessBankSingleStatementResponse
      */
-    public function setMidocoBankProcessProtocolType(array $midocoBankProcessProtocolType = []): self
+    public function setMidocoBankProcessProtocolType(?array $midocoBankProcessProtocolType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankProcessProtocolTypeArrayErrorMessage = self::validateMidocoBankProcessProtocolTypeForArrayConstraintsFromSetMidocoBankProcessProtocolType($midocoBankProcessProtocolType))) {
+        if ('' !== ($midocoBankProcessProtocolTypeArrayErrorMessage = self::validateMidocoBankProcessProtocolTypeForArrayConstraintFromSetMidocoBankProcessProtocolType($midocoBankProcessProtocolType))) {
             throw new InvalidArgumentException($midocoBankProcessProtocolTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankProcessProtocolType = $midocoBankProcessProtocolType;

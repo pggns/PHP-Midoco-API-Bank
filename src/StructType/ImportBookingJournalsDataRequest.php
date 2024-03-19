@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportBookingJournalsDataRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportBookingJournalsDataRequest extends AbstractStructBase
 {
     /**

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CheckBankBookingJournalResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CheckBankBookingJournalResponse extends AbstractStructBase
 {
     /**
@@ -20,7 +21,7 @@ class CheckBankBookingJournalResponse extends AbstractStructBase
      * - ref: CheckMidocoBankBookingJournal
      * @var \Pggns\MidocoApi\Bank\StructType\CheckMidocoBankBookingJournalType[]
      */
-    protected array $CheckMidocoBankBookingJournal = [];
+    protected ?array $CheckMidocoBankBookingJournal = null;
     /**
      * The noOfErrors
      * @var int|null
@@ -33,7 +34,7 @@ class CheckBankBookingJournalResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\CheckMidocoBankBookingJournalType[] $checkMidocoBankBookingJournal
      * @param int $noOfErrors
      */
-    public function __construct(array $checkMidocoBankBookingJournal = [], ?int $noOfErrors = null)
+    public function __construct(?array $checkMidocoBankBookingJournal = null, ?int $noOfErrors = null)
     {
         $this
             ->setCheckMidocoBankBookingJournal($checkMidocoBankBookingJournal)
@@ -43,18 +44,22 @@ class CheckBankBookingJournalResponse extends AbstractStructBase
      * Get CheckMidocoBankBookingJournal value
      * @return \Pggns\MidocoApi\Bank\StructType\CheckMidocoBankBookingJournalType[]
      */
-    public function getCheckMidocoBankBookingJournal(): array
+    public function getCheckMidocoBankBookingJournal(): ?array
     {
         return $this->CheckMidocoBankBookingJournal;
     }
     /**
-     * This method is responsible for validating the values passed to the setCheckMidocoBankBookingJournal method
+     * This method is responsible for validating the value(s) passed to the setCheckMidocoBankBookingJournal method
      * This method is willingly generated in order to preserve the one-line inline validation within the setCheckMidocoBankBookingJournal method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateCheckMidocoBankBookingJournalForArrayConstraintsFromSetCheckMidocoBankBookingJournal(array $values = []): string
+    public static function validateCheckMidocoBankBookingJournalForArrayConstraintFromSetCheckMidocoBankBookingJournal(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $checkBankBookingJournalResponseCheckMidocoBankBookingJournalItem) {
@@ -76,10 +81,10 @@ class CheckBankBookingJournalResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\CheckMidocoBankBookingJournalType[] $checkMidocoBankBookingJournal
      * @return \Pggns\MidocoApi\Bank\StructType\CheckBankBookingJournalResponse
      */
-    public function setCheckMidocoBankBookingJournal(array $checkMidocoBankBookingJournal = []): self
+    public function setCheckMidocoBankBookingJournal(?array $checkMidocoBankBookingJournal = null): self
     {
         // validation for constraint: array
-        if ('' !== ($checkMidocoBankBookingJournalArrayErrorMessage = self::validateCheckMidocoBankBookingJournalForArrayConstraintsFromSetCheckMidocoBankBookingJournal($checkMidocoBankBookingJournal))) {
+        if ('' !== ($checkMidocoBankBookingJournalArrayErrorMessage = self::validateCheckMidocoBankBookingJournalForArrayConstraintFromSetCheckMidocoBankBookingJournal($checkMidocoBankBookingJournal))) {
             throw new InvalidArgumentException($checkMidocoBankBookingJournalArrayErrorMessage, __LINE__);
         }
         $this->CheckMidocoBankBookingJournal = $checkMidocoBankBookingJournal;

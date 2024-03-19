@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportBankFileResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportBankFileResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ImportBankFileResponse extends AbstractStructBase
      * - ref: MidocoBankStatementAccount
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementAccountType[]
      */
-    protected array $MidocoBankStatementAccount = [];
+    protected ?array $MidocoBankStatementAccount = null;
     /**
      * The MidocoBankProcessProtocolType
      * Meta information extracted from the WSDL
@@ -30,7 +31,7 @@ class ImportBankFileResponse extends AbstractStructBase
      * - ref: MidocoBankProcessProtocolType
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankProcessProtocolType[]
      */
-    protected array $MidocoBankProcessProtocolType = [];
+    protected ?array $MidocoBankProcessProtocolType = null;
     /**
      * The errorCount
      * @var int|null
@@ -45,7 +46,7 @@ class ImportBankFileResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankProcessProtocolType[] $midocoBankProcessProtocolType
      * @param int $errorCount
      */
-    public function __construct(array $midocoBankStatementAccount = [], array $midocoBankProcessProtocolType = [], ?int $errorCount = null)
+    public function __construct(?array $midocoBankStatementAccount = null, ?array $midocoBankProcessProtocolType = null, ?int $errorCount = null)
     {
         $this
             ->setMidocoBankStatementAccount($midocoBankStatementAccount)
@@ -56,18 +57,22 @@ class ImportBankFileResponse extends AbstractStructBase
      * Get MidocoBankStatementAccount value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementAccountType[]
      */
-    public function getMidocoBankStatementAccount(): array
+    public function getMidocoBankStatementAccount(): ?array
     {
         return $this->MidocoBankStatementAccount;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementAccount method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementAccount method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementAccount method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementAccountForArrayConstraintsFromSetMidocoBankStatementAccount(array $values = []): string
+    public static function validateMidocoBankStatementAccountForArrayConstraintFromSetMidocoBankStatementAccount(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importBankFileResponseMidocoBankStatementAccountItem) {
@@ -89,10 +94,10 @@ class ImportBankFileResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementAccountType[] $midocoBankStatementAccount
      * @return \Pggns\MidocoApi\Bank\StructType\ImportBankFileResponse
      */
-    public function setMidocoBankStatementAccount(array $midocoBankStatementAccount = []): self
+    public function setMidocoBankStatementAccount(?array $midocoBankStatementAccount = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementAccountArrayErrorMessage = self::validateMidocoBankStatementAccountForArrayConstraintsFromSetMidocoBankStatementAccount($midocoBankStatementAccount))) {
+        if ('' !== ($midocoBankStatementAccountArrayErrorMessage = self::validateMidocoBankStatementAccountForArrayConstraintFromSetMidocoBankStatementAccount($midocoBankStatementAccount))) {
             throw new InvalidArgumentException($midocoBankStatementAccountArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementAccount = $midocoBankStatementAccount;
@@ -119,18 +124,22 @@ class ImportBankFileResponse extends AbstractStructBase
      * Get MidocoBankProcessProtocolType value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankProcessProtocolType[]
      */
-    public function getMidocoBankProcessProtocolType(): array
+    public function getMidocoBankProcessProtocolType(): ?array
     {
         return $this->MidocoBankProcessProtocolType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankProcessProtocolType method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankProcessProtocolType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankProcessProtocolType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankProcessProtocolTypeForArrayConstraintsFromSetMidocoBankProcessProtocolType(array $values = []): string
+    public static function validateMidocoBankProcessProtocolTypeForArrayConstraintFromSetMidocoBankProcessProtocolType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $importBankFileResponseMidocoBankProcessProtocolTypeItem) {
@@ -152,10 +161,10 @@ class ImportBankFileResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankProcessProtocolType[] $midocoBankProcessProtocolType
      * @return \Pggns\MidocoApi\Bank\StructType\ImportBankFileResponse
      */
-    public function setMidocoBankProcessProtocolType(array $midocoBankProcessProtocolType = []): self
+    public function setMidocoBankProcessProtocolType(?array $midocoBankProcessProtocolType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankProcessProtocolTypeArrayErrorMessage = self::validateMidocoBankProcessProtocolTypeForArrayConstraintsFromSetMidocoBankProcessProtocolType($midocoBankProcessProtocolType))) {
+        if ('' !== ($midocoBankProcessProtocolTypeArrayErrorMessage = self::validateMidocoBankProcessProtocolTypeForArrayConstraintFromSetMidocoBankProcessProtocolType($midocoBankProcessProtocolType))) {
             throw new InvalidArgumentException($midocoBankProcessProtocolTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankProcessProtocolType = $midocoBankProcessProtocolType;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBankOpenEntry StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBankOpenEntry extends DebitorAccountEntryType
 {
     /**

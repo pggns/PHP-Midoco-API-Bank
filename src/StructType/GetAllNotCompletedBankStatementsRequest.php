@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetAllNotCompletedBankStatementsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetAllNotCompletedBankStatementsRequest extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBankStatementAccountType StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBankStatementAccountType extends BankStatementAccountDTO
 {
     /**
@@ -56,7 +57,7 @@ class MidocoBankStatementAccountType extends BankStatementAccountDTO
      * - ref: MidocoBankStatementEntry
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry[]
      */
-    protected array $MidocoBankStatementEntry = [];
+    protected ?array $MidocoBankStatementEntry = null;
     /**
      * Constructor method for MidocoBankStatementAccountType
      * @uses MidocoBankStatementAccountType::setReadUserId()
@@ -76,7 +77,7 @@ class MidocoBankStatementAccountType extends BankStatementAccountDTO
      * @param string $fileFormat
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry[] $midocoBankStatementEntry
      */
-    public function __construct(?int $readUserId = null, ?string $readUserName = null, ?string $readDate = null, ?string $numberAccounted = null, ?string $numberBooked = null, ?string $unitName = null, ?string $fileFormat = null, array $midocoBankStatementEntry = [])
+    public function __construct(?int $readUserId = null, ?string $readUserName = null, ?string $readDate = null, ?string $numberAccounted = null, ?string $numberBooked = null, ?string $unitName = null, ?string $fileFormat = null, ?array $midocoBankStatementEntry = null)
     {
         $this
             ->setReadUserId($readUserId)
@@ -253,18 +254,22 @@ class MidocoBankStatementAccountType extends BankStatementAccountDTO
      * Get MidocoBankStatementEntry value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry[]
      */
-    public function getMidocoBankStatementEntry(): array
+    public function getMidocoBankStatementEntry(): ?array
     {
         return $this->MidocoBankStatementEntry;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementEntry method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementEntry method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementEntry method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementEntryForArrayConstraintsFromSetMidocoBankStatementEntry(array $values = []): string
+    public static function validateMidocoBankStatementEntryForArrayConstraintFromSetMidocoBankStatementEntry(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBankStatementAccountTypeMidocoBankStatementEntryItem) {
@@ -286,10 +291,10 @@ class MidocoBankStatementAccountType extends BankStatementAccountDTO
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry[] $midocoBankStatementEntry
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementAccountType
      */
-    public function setMidocoBankStatementEntry(array $midocoBankStatementEntry = []): self
+    public function setMidocoBankStatementEntry(?array $midocoBankStatementEntry = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementEntryArrayErrorMessage = self::validateMidocoBankStatementEntryForArrayConstraintsFromSetMidocoBankStatementEntry($midocoBankStatementEntry))) {
+        if ('' !== ($midocoBankStatementEntryArrayErrorMessage = self::validateMidocoBankStatementEntryForArrayConstraintFromSetMidocoBankStatementEntry($midocoBankStatementEntry))) {
             throw new InvalidArgumentException($midocoBankStatementEntryArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementEntry = $midocoBankStatementEntry;

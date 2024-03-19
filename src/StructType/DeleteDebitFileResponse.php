@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for DeleteDebitFileResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteDebitFileResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoBankStatementEntry StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoBankStatementEntry extends BankStatementEntryDTO
 {
     /**
@@ -38,7 +39,7 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * - ref: MidocoBankStatementEntryPurpose
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryPurpose[]
      */
-    protected array $MidocoBankStatementEntryPurpose = [];
+    protected ?array $MidocoBankStatementEntryPurpose = null;
     /**
      * The MidocoBankBookingJournal
      * Meta information extracted from the WSDL
@@ -47,7 +48,7 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * - ref: MidocoBankBookingJournal
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[]
      */
-    protected array $MidocoBankBookingJournal = [];
+    protected ?array $MidocoBankBookingJournal = null;
     /**
      * The MidocoBankStatementEntryDetail
      * Meta information extracted from the WSDL
@@ -56,7 +57,7 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * - ref: MidocoBankStatementEntryDetail
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryDetail[]
      */
-    protected array $MidocoBankStatementEntryDetail = [];
+    protected ?array $MidocoBankStatementEntryDetail = null;
     /**
      * The MidocoBankStatementEntryCharge
      * Meta information extracted from the WSDL
@@ -65,7 +66,12 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * - ref: MidocoBankStatementEntryCharge
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryCharge[]
      */
-    protected array $MidocoBankStatementEntryCharge = [];
+    protected ?array $MidocoBankStatementEntryCharge = null;
+    /**
+     * The extraPurpose
+     * @var string|null
+     */
+    protected ?string $extraPurpose = null;
     /**
      * Constructor method for MidocoBankStatementEntry
      * @uses MidocoBankStatementEntry::setReceiptNo()
@@ -75,6 +81,7 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * @uses MidocoBankStatementEntry::setMidocoBankBookingJournal()
      * @uses MidocoBankStatementEntry::setMidocoBankStatementEntryDetail()
      * @uses MidocoBankStatementEntry::setMidocoBankStatementEntryCharge()
+     * @uses MidocoBankStatementEntry::setExtraPurpose()
      * @param string $receiptNo
      * @param string $bookingText
      * @param float $valueAfterAccounted
@@ -82,8 +89,9 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[] $midocoBankBookingJournal
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryDetail[] $midocoBankStatementEntryDetail
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryCharge[] $midocoBankStatementEntryCharge
+     * @param string $extraPurpose
      */
-    public function __construct(?string $receiptNo = null, ?string $bookingText = null, ?float $valueAfterAccounted = null, array $midocoBankStatementEntryPurpose = [], array $midocoBankBookingJournal = [], array $midocoBankStatementEntryDetail = [], array $midocoBankStatementEntryCharge = [])
+    public function __construct(?string $receiptNo = null, ?string $bookingText = null, ?float $valueAfterAccounted = null, ?array $midocoBankStatementEntryPurpose = null, ?array $midocoBankBookingJournal = null, ?array $midocoBankStatementEntryDetail = null, ?array $midocoBankStatementEntryCharge = null, ?string $extraPurpose = null)
     {
         $this
             ->setReceiptNo($receiptNo)
@@ -92,7 +100,8 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
             ->setMidocoBankStatementEntryPurpose($midocoBankStatementEntryPurpose)
             ->setMidocoBankBookingJournal($midocoBankBookingJournal)
             ->setMidocoBankStatementEntryDetail($midocoBankStatementEntryDetail)
-            ->setMidocoBankStatementEntryCharge($midocoBankStatementEntryCharge);
+            ->setMidocoBankStatementEntryCharge($midocoBankStatementEntryCharge)
+            ->setExtraPurpose($extraPurpose);
     }
     /**
      * Get receiptNo value
@@ -167,18 +176,22 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * Get MidocoBankStatementEntryPurpose value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryPurpose[]
      */
-    public function getMidocoBankStatementEntryPurpose(): array
+    public function getMidocoBankStatementEntryPurpose(): ?array
     {
         return $this->MidocoBankStatementEntryPurpose;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementEntryPurpose method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementEntryPurpose method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementEntryPurpose method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementEntryPurposeForArrayConstraintsFromSetMidocoBankStatementEntryPurpose(array $values = []): string
+    public static function validateMidocoBankStatementEntryPurposeForArrayConstraintFromSetMidocoBankStatementEntryPurpose(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBankStatementEntryMidocoBankStatementEntryPurposeItem) {
@@ -200,10 +213,10 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryPurpose[] $midocoBankStatementEntryPurpose
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry
      */
-    public function setMidocoBankStatementEntryPurpose(array $midocoBankStatementEntryPurpose = []): self
+    public function setMidocoBankStatementEntryPurpose(?array $midocoBankStatementEntryPurpose = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementEntryPurposeArrayErrorMessage = self::validateMidocoBankStatementEntryPurposeForArrayConstraintsFromSetMidocoBankStatementEntryPurpose($midocoBankStatementEntryPurpose))) {
+        if ('' !== ($midocoBankStatementEntryPurposeArrayErrorMessage = self::validateMidocoBankStatementEntryPurposeForArrayConstraintFromSetMidocoBankStatementEntryPurpose($midocoBankStatementEntryPurpose))) {
             throw new InvalidArgumentException($midocoBankStatementEntryPurposeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementEntryPurpose = $midocoBankStatementEntryPurpose;
@@ -230,18 +243,22 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * Get MidocoBankBookingJournal value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[]
      */
-    public function getMidocoBankBookingJournal(): array
+    public function getMidocoBankBookingJournal(): ?array
     {
         return $this->MidocoBankBookingJournal;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankBookingJournal method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankBookingJournal method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankBookingJournal method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankBookingJournalForArrayConstraintsFromSetMidocoBankBookingJournal(array $values = []): string
+    public static function validateMidocoBankBookingJournalForArrayConstraintFromSetMidocoBankBookingJournal(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBankStatementEntryMidocoBankBookingJournalItem) {
@@ -263,10 +280,10 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[] $midocoBankBookingJournal
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry
      */
-    public function setMidocoBankBookingJournal(array $midocoBankBookingJournal = []): self
+    public function setMidocoBankBookingJournal(?array $midocoBankBookingJournal = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankBookingJournalArrayErrorMessage = self::validateMidocoBankBookingJournalForArrayConstraintsFromSetMidocoBankBookingJournal($midocoBankBookingJournal))) {
+        if ('' !== ($midocoBankBookingJournalArrayErrorMessage = self::validateMidocoBankBookingJournalForArrayConstraintFromSetMidocoBankBookingJournal($midocoBankBookingJournal))) {
             throw new InvalidArgumentException($midocoBankBookingJournalArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankBookingJournal = $midocoBankBookingJournal;
@@ -293,18 +310,22 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * Get MidocoBankStatementEntryDetail value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryDetail[]
      */
-    public function getMidocoBankStatementEntryDetail(): array
+    public function getMidocoBankStatementEntryDetail(): ?array
     {
         return $this->MidocoBankStatementEntryDetail;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementEntryDetail method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementEntryDetail method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementEntryDetail method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementEntryDetailForArrayConstraintsFromSetMidocoBankStatementEntryDetail(array $values = []): string
+    public static function validateMidocoBankStatementEntryDetailForArrayConstraintFromSetMidocoBankStatementEntryDetail(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBankStatementEntryMidocoBankStatementEntryDetailItem) {
@@ -326,10 +347,10 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryDetail[] $midocoBankStatementEntryDetail
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry
      */
-    public function setMidocoBankStatementEntryDetail(array $midocoBankStatementEntryDetail = []): self
+    public function setMidocoBankStatementEntryDetail(?array $midocoBankStatementEntryDetail = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementEntryDetailArrayErrorMessage = self::validateMidocoBankStatementEntryDetailForArrayConstraintsFromSetMidocoBankStatementEntryDetail($midocoBankStatementEntryDetail))) {
+        if ('' !== ($midocoBankStatementEntryDetailArrayErrorMessage = self::validateMidocoBankStatementEntryDetailForArrayConstraintFromSetMidocoBankStatementEntryDetail($midocoBankStatementEntryDetail))) {
             throw new InvalidArgumentException($midocoBankStatementEntryDetailArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementEntryDetail = $midocoBankStatementEntryDetail;
@@ -356,18 +377,22 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * Get MidocoBankStatementEntryCharge value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryCharge[]
      */
-    public function getMidocoBankStatementEntryCharge(): array
+    public function getMidocoBankStatementEntryCharge(): ?array
     {
         return $this->MidocoBankStatementEntryCharge;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementEntryCharge method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementEntryCharge method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementEntryCharge method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementEntryChargeForArrayConstraintsFromSetMidocoBankStatementEntryCharge(array $values = []): string
+    public static function validateMidocoBankStatementEntryChargeForArrayConstraintFromSetMidocoBankStatementEntryCharge(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $midocoBankStatementEntryMidocoBankStatementEntryChargeItem) {
@@ -389,10 +414,10 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryCharge[] $midocoBankStatementEntryCharge
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry
      */
-    public function setMidocoBankStatementEntryCharge(array $midocoBankStatementEntryCharge = []): self
+    public function setMidocoBankStatementEntryCharge(?array $midocoBankStatementEntryCharge = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementEntryChargeArrayErrorMessage = self::validateMidocoBankStatementEntryChargeForArrayConstraintsFromSetMidocoBankStatementEntryCharge($midocoBankStatementEntryCharge))) {
+        if ('' !== ($midocoBankStatementEntryChargeArrayErrorMessage = self::validateMidocoBankStatementEntryChargeForArrayConstraintFromSetMidocoBankStatementEntryCharge($midocoBankStatementEntryCharge))) {
             throw new InvalidArgumentException($midocoBankStatementEntryChargeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementEntryCharge = $midocoBankStatementEntryCharge;
@@ -412,6 +437,29 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
             throw new InvalidArgumentException(sprintf('The MidocoBankStatementEntryCharge property can only contain items of type \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryCharge, %s given', is_object($item) ? get_class($item) : (is_array($item) ? implode(', ', $item) : gettype($item))), __LINE__);
         }
         $this->MidocoBankStatementEntryCharge[] = $item;
+        
+        return $this;
+    }
+    /**
+     * Get extraPurpose value
+     * @return string|null
+     */
+    public function getExtraPurpose(): ?string
+    {
+        return $this->extraPurpose;
+    }
+    /**
+     * Set extraPurpose value
+     * @param string $extraPurpose
+     * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry
+     */
+    public function setExtraPurpose(?string $extraPurpose = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($extraPurpose) && !is_string($extraPurpose)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($extraPurpose, true), gettype($extraPurpose)), __LINE__);
+        }
+        $this->extraPurpose = $extraPurpose;
         
         return $this;
     }

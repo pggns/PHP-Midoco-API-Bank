@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBankStatementEntryPurposeResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBankStatementEntryPurposeResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBankStatementEntryPurposeResponse extends AbstractStructBase
      * - ref: MidocoBankStatementEntryPurpose
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryPurpose[]
      */
-    protected array $MidocoBankStatementEntryPurpose = [];
+    protected ?array $MidocoBankStatementEntryPurpose = null;
     /**
      * Constructor method for GetBankStatementEntryPurposeResponse
      * @uses GetBankStatementEntryPurposeResponse::setMidocoBankStatementEntryPurpose()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryPurpose[] $midocoBankStatementEntryPurpose
      */
-    public function __construct(array $midocoBankStatementEntryPurpose = [])
+    public function __construct(?array $midocoBankStatementEntryPurpose = null)
     {
         $this
             ->setMidocoBankStatementEntryPurpose($midocoBankStatementEntryPurpose);
@@ -36,18 +37,22 @@ class GetBankStatementEntryPurposeResponse extends AbstractStructBase
      * Get MidocoBankStatementEntryPurpose value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryPurpose[]
      */
-    public function getMidocoBankStatementEntryPurpose(): array
+    public function getMidocoBankStatementEntryPurpose(): ?array
     {
         return $this->MidocoBankStatementEntryPurpose;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementEntryPurpose method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementEntryPurpose method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementEntryPurpose method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementEntryPurposeForArrayConstraintsFromSetMidocoBankStatementEntryPurpose(array $values = []): string
+    public static function validateMidocoBankStatementEntryPurposeForArrayConstraintFromSetMidocoBankStatementEntryPurpose(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBankStatementEntryPurposeResponseMidocoBankStatementEntryPurposeItem) {
@@ -69,10 +74,10 @@ class GetBankStatementEntryPurposeResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryPurpose[] $midocoBankStatementEntryPurpose
      * @return \Pggns\MidocoApi\Bank\StructType\GetBankStatementEntryPurposeResponse
      */
-    public function setMidocoBankStatementEntryPurpose(array $midocoBankStatementEntryPurpose = []): self
+    public function setMidocoBankStatementEntryPurpose(?array $midocoBankStatementEntryPurpose = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementEntryPurposeArrayErrorMessage = self::validateMidocoBankStatementEntryPurposeForArrayConstraintsFromSetMidocoBankStatementEntryPurpose($midocoBankStatementEntryPurpose))) {
+        if ('' !== ($midocoBankStatementEntryPurposeArrayErrorMessage = self::validateMidocoBankStatementEntryPurposeForArrayConstraintFromSetMidocoBankStatementEntryPurpose($midocoBankStatementEntryPurpose))) {
             throw new InvalidArgumentException($midocoBankStatementEntryPurposeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementEntryPurpose = $midocoBankStatementEntryPurpose;

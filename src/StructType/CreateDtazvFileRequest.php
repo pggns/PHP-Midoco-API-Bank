@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateDtazvFileRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateDtazvFileRequest extends AbstractStructBase
 {
     /**
@@ -38,7 +39,7 @@ class CreateDtazvFileRequest extends AbstractStructBase
      * - ref: order:MidocoDtazvDirectDebitPosition
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoDtazvDirectDebitPosition[]
      */
-    protected array $MidocoDtazvDirectDebitPosition = [];
+    protected ?array $MidocoDtazvDirectDebitPosition = null;
     /**
      * Constructor method for CreateDtazvFileRequest
      * @uses CreateDtazvFileRequest::setExchangeRate()
@@ -50,7 +51,7 @@ class CreateDtazvFileRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankAccount $midocoBankAccount
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoDtazvDirectDebitPosition[] $midocoDtazvDirectDebitPosition
      */
-    public function __construct(?float $exchangeRate = null, ?string $currency = null, ?\Pggns\MidocoApi\Bank\StructType\MidocoBankAccount $midocoBankAccount = null, array $midocoDtazvDirectDebitPosition = [])
+    public function __construct(?float $exchangeRate = null, ?string $currency = null, ?\Pggns\MidocoApi\Bank\StructType\MidocoBankAccount $midocoBankAccount = null, ?array $midocoDtazvDirectDebitPosition = null)
     {
         $this
             ->setExchangeRate($exchangeRate)
@@ -127,18 +128,22 @@ class CreateDtazvFileRequest extends AbstractStructBase
      * Get MidocoDtazvDirectDebitPosition value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoDtazvDirectDebitPosition[]
      */
-    public function getMidocoDtazvDirectDebitPosition(): array
+    public function getMidocoDtazvDirectDebitPosition(): ?array
     {
         return $this->MidocoDtazvDirectDebitPosition;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDtazvDirectDebitPosition method
+     * This method is responsible for validating the value(s) passed to the setMidocoDtazvDirectDebitPosition method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDtazvDirectDebitPosition method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDtazvDirectDebitPositionForArrayConstraintsFromSetMidocoDtazvDirectDebitPosition(array $values = []): string
+    public static function validateMidocoDtazvDirectDebitPositionForArrayConstraintFromSetMidocoDtazvDirectDebitPosition(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $createDtazvFileRequestMidocoDtazvDirectDebitPositionItem) {
@@ -160,10 +165,10 @@ class CreateDtazvFileRequest extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoDtazvDirectDebitPosition[] $midocoDtazvDirectDebitPosition
      * @return \Pggns\MidocoApi\Bank\StructType\CreateDtazvFileRequest
      */
-    public function setMidocoDtazvDirectDebitPosition(array $midocoDtazvDirectDebitPosition = []): self
+    public function setMidocoDtazvDirectDebitPosition(?array $midocoDtazvDirectDebitPosition = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDtazvDirectDebitPositionArrayErrorMessage = self::validateMidocoDtazvDirectDebitPositionForArrayConstraintsFromSetMidocoDtazvDirectDebitPosition($midocoDtazvDirectDebitPosition))) {
+        if ('' !== ($midocoDtazvDirectDebitPositionArrayErrorMessage = self::validateMidocoDtazvDirectDebitPositionForArrayConstraintFromSetMidocoDtazvDirectDebitPosition($midocoDtazvDirectDebitPosition))) {
             throw new InvalidArgumentException($midocoDtazvDirectDebitPositionArrayErrorMessage, __LINE__);
         }
         $this->MidocoDtazvDirectDebitPosition = $midocoDtazvDirectDebitPosition;

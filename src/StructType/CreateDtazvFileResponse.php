@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CreateDtazvFileResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CreateDtazvFileResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class CreateDtazvFileResponse extends AbstractStructBase
      * - ref: order:MidocoDirectDebitProtocol
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoDirectDebitProtocol[]
      */
-    protected array $MidocoDirectDebitProtocol = [];
+    protected ?array $MidocoDirectDebitProtocol = null;
     /**
      * The fileId
      * @var int|null
@@ -62,7 +63,7 @@ class CreateDtazvFileResponse extends AbstractStructBase
      * @param string $errorCode
      * @param string $errorBundle
      */
-    public function __construct(array $midocoDirectDebitProtocol = [], ?int $fileId = null, ?int $errorCount = null, ?int $createdTransactionCount = null, ?string $errorCode = null, ?string $errorBundle = null)
+    public function __construct(?array $midocoDirectDebitProtocol = null, ?int $fileId = null, ?int $errorCount = null, ?int $createdTransactionCount = null, ?string $errorCode = null, ?string $errorBundle = null)
     {
         $this
             ->setMidocoDirectDebitProtocol($midocoDirectDebitProtocol)
@@ -76,18 +77,22 @@ class CreateDtazvFileResponse extends AbstractStructBase
      * Get MidocoDirectDebitProtocol value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoDirectDebitProtocol[]
      */
-    public function getMidocoDirectDebitProtocol(): array
+    public function getMidocoDirectDebitProtocol(): ?array
     {
         return $this->MidocoDirectDebitProtocol;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoDirectDebitProtocol method
+     * This method is responsible for validating the value(s) passed to the setMidocoDirectDebitProtocol method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoDirectDebitProtocol method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoDirectDebitProtocolForArrayConstraintsFromSetMidocoDirectDebitProtocol(array $values = []): string
+    public static function validateMidocoDirectDebitProtocolForArrayConstraintFromSetMidocoDirectDebitProtocol(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $createDtazvFileResponseMidocoDirectDebitProtocolItem) {
@@ -109,10 +114,10 @@ class CreateDtazvFileResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoDirectDebitProtocol[] $midocoDirectDebitProtocol
      * @return \Pggns\MidocoApi\Bank\StructType\CreateDtazvFileResponse
      */
-    public function setMidocoDirectDebitProtocol(array $midocoDirectDebitProtocol = []): self
+    public function setMidocoDirectDebitProtocol(?array $midocoDirectDebitProtocol = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoDirectDebitProtocolArrayErrorMessage = self::validateMidocoDirectDebitProtocolForArrayConstraintsFromSetMidocoDirectDebitProtocol($midocoDirectDebitProtocol))) {
+        if ('' !== ($midocoDirectDebitProtocolArrayErrorMessage = self::validateMidocoDirectDebitProtocolForArrayConstraintFromSetMidocoDirectDebitProtocol($midocoDirectDebitProtocol))) {
             throw new InvalidArgumentException($midocoDirectDebitProtocolArrayErrorMessage, __LINE__);
         }
         $this->MidocoDirectDebitProtocol = $midocoDirectDebitProtocol;

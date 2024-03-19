@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for SepaOnlineDirectDebitResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class SepaOnlineDirectDebitResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class SepaOnlineDirectDebitResponse extends AbstractStructBase
      * - ref: MidocoSepaOnlineFilesData
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoSepaOnlineFilesData[]
      */
-    protected array $MidocoSepaOnlineFilesData = [];
+    protected ?array $MidocoSepaOnlineFilesData = null;
     /**
      * Constructor method for SepaOnlineDirectDebitResponse
      * @uses SepaOnlineDirectDebitResponse::setMidocoSepaOnlineFilesData()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoSepaOnlineFilesData[] $midocoSepaOnlineFilesData
      */
-    public function __construct(array $midocoSepaOnlineFilesData = [])
+    public function __construct(?array $midocoSepaOnlineFilesData = null)
     {
         $this
             ->setMidocoSepaOnlineFilesData($midocoSepaOnlineFilesData);
@@ -36,18 +37,22 @@ class SepaOnlineDirectDebitResponse extends AbstractStructBase
      * Get MidocoSepaOnlineFilesData value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoSepaOnlineFilesData[]
      */
-    public function getMidocoSepaOnlineFilesData(): array
+    public function getMidocoSepaOnlineFilesData(): ?array
     {
         return $this->MidocoSepaOnlineFilesData;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoSepaOnlineFilesData method
+     * This method is responsible for validating the value(s) passed to the setMidocoSepaOnlineFilesData method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoSepaOnlineFilesData method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoSepaOnlineFilesDataForArrayConstraintsFromSetMidocoSepaOnlineFilesData(array $values = []): string
+    public static function validateMidocoSepaOnlineFilesDataForArrayConstraintFromSetMidocoSepaOnlineFilesData(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $sepaOnlineDirectDebitResponseMidocoSepaOnlineFilesDataItem) {
@@ -69,10 +74,10 @@ class SepaOnlineDirectDebitResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoSepaOnlineFilesData[] $midocoSepaOnlineFilesData
      * @return \Pggns\MidocoApi\Bank\StructType\SepaOnlineDirectDebitResponse
      */
-    public function setMidocoSepaOnlineFilesData(array $midocoSepaOnlineFilesData = []): self
+    public function setMidocoSepaOnlineFilesData(?array $midocoSepaOnlineFilesData = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoSepaOnlineFilesDataArrayErrorMessage = self::validateMidocoSepaOnlineFilesDataForArrayConstraintsFromSetMidocoSepaOnlineFilesData($midocoSepaOnlineFilesData))) {
+        if ('' !== ($midocoSepaOnlineFilesDataArrayErrorMessage = self::validateMidocoSepaOnlineFilesDataForArrayConstraintFromSetMidocoSepaOnlineFilesData($midocoSepaOnlineFilesData))) {
             throw new InvalidArgumentException($midocoSepaOnlineFilesDataArrayErrorMessage, __LINE__);
         }
         $this->MidocoSepaOnlineFilesData = $midocoSepaOnlineFilesData;

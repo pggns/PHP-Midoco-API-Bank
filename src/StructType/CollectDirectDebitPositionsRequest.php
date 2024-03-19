@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for CollectDirectDebitPositionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class CollectDirectDebitPositionsRequest extends AbstractStructBase
 {
     /**
@@ -50,7 +51,7 @@ class CollectDirectDebitPositionsRequest extends AbstractStructBase
      * - ref: DtausTransactionType
      * @var string[]
      */
-    protected array $DtausTransactionType = [];
+    protected ?array $DtausTransactionType = null;
     /**
      * The creditorFrom
      * @var string|null
@@ -82,7 +83,7 @@ class CollectDirectDebitPositionsRequest extends AbstractStructBase
      * @param string $creditorFrom
      * @param string $creditorTo
      */
-    public function __construct(?string $accountNo = null, ?string $accountBlz = null, ?string $accountCountry = null, ?string $perDate = null, ?int $paymentType = null, ?int $debitType = null, array $dtausTransactionType = [], ?string $creditorFrom = null, ?string $creditorTo = null)
+    public function __construct(?string $accountNo = null, ?string $accountBlz = null, ?string $accountCountry = null, ?string $perDate = null, ?int $paymentType = null, ?int $debitType = null, ?array $dtausTransactionType = null, ?string $creditorFrom = null, ?string $creditorTo = null)
     {
         $this
             ->setAccountNo($accountNo)
@@ -237,18 +238,22 @@ class CollectDirectDebitPositionsRequest extends AbstractStructBase
      * Get DtausTransactionType value
      * @return string[]
      */
-    public function getDtausTransactionType(): array
+    public function getDtausTransactionType(): ?array
     {
         return $this->DtausTransactionType;
     }
     /**
-     * This method is responsible for validating the values passed to the setDtausTransactionType method
+     * This method is responsible for validating the value(s) passed to the setDtausTransactionType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDtausTransactionType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDtausTransactionTypeForArrayConstraintsFromSetDtausTransactionType(array $values = []): string
+    public static function validateDtausTransactionTypeForArrayConstraintFromSetDtausTransactionType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $collectDirectDebitPositionsRequestDtausTransactionTypeItem) {
@@ -272,10 +277,10 @@ class CollectDirectDebitPositionsRequest extends AbstractStructBase
      * @param string[] $dtausTransactionType
      * @return \Pggns\MidocoApi\Bank\StructType\CollectDirectDebitPositionsRequest
      */
-    public function setDtausTransactionType(array $dtausTransactionType = []): self
+    public function setDtausTransactionType(?array $dtausTransactionType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($dtausTransactionTypeArrayErrorMessage = self::validateDtausTransactionTypeForArrayConstraintsFromSetDtausTransactionType($dtausTransactionType))) {
+        if ('' !== ($dtausTransactionTypeArrayErrorMessage = self::validateDtausTransactionTypeForArrayConstraintFromSetDtausTransactionType($dtausTransactionType))) {
             throw new InvalidArgumentException($dtausTransactionTypeArrayErrorMessage, __LINE__);
         }
         $this->DtausTransactionType = $dtausTransactionType;

@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: DeleteBankStatementProtocol --- delete one or more BankStatementProtocol
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class DeleteBankStatementProtocolResponse extends AbstractStructBase
 {
 }

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoSepaBankInfo StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoSepaBankInfo extends MidocoBankInfo
 {
     /**

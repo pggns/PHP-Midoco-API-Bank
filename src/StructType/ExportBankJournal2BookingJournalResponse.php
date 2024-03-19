@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ExportBankJournal2BookingJournalResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ExportBankJournal2BookingJournalResponse extends AbstractStructBase
 {
     /**
@@ -21,7 +22,7 @@ class ExportBankJournal2BookingJournalResponse extends AbstractStructBase
      * - ref: MidocoBankExportProtocolType
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankExportProtocolType[]
      */
-    protected array $MidocoBankExportProtocolType = [];
+    protected ?array $MidocoBankExportProtocolType = null;
     /**
      * The noExported
      * @var int|null
@@ -48,7 +49,7 @@ class ExportBankJournal2BookingJournalResponse extends AbstractStructBase
      * @param int $noErrors
      * @param int $repositoryId
      */
-    public function __construct(array $midocoBankExportProtocolType = [], ?int $noExported = null, ?int $noErrors = null, ?int $repositoryId = null)
+    public function __construct(?array $midocoBankExportProtocolType = null, ?int $noExported = null, ?int $noErrors = null, ?int $repositoryId = null)
     {
         $this
             ->setMidocoBankExportProtocolType($midocoBankExportProtocolType)
@@ -60,18 +61,22 @@ class ExportBankJournal2BookingJournalResponse extends AbstractStructBase
      * Get MidocoBankExportProtocolType value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankExportProtocolType[]
      */
-    public function getMidocoBankExportProtocolType(): array
+    public function getMidocoBankExportProtocolType(): ?array
     {
         return $this->MidocoBankExportProtocolType;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankExportProtocolType method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankExportProtocolType method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankExportProtocolType method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankExportProtocolTypeForArrayConstraintsFromSetMidocoBankExportProtocolType(array $values = []): string
+    public static function validateMidocoBankExportProtocolTypeForArrayConstraintFromSetMidocoBankExportProtocolType(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $exportBankJournal2BookingJournalResponseMidocoBankExportProtocolTypeItem) {
@@ -93,10 +98,10 @@ class ExportBankJournal2BookingJournalResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankExportProtocolType[] $midocoBankExportProtocolType
      * @return \Pggns\MidocoApi\Bank\StructType\ExportBankJournal2BookingJournalResponse
      */
-    public function setMidocoBankExportProtocolType(array $midocoBankExportProtocolType = []): self
+    public function setMidocoBankExportProtocolType(?array $midocoBankExportProtocolType = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankExportProtocolTypeArrayErrorMessage = self::validateMidocoBankExportProtocolTypeForArrayConstraintsFromSetMidocoBankExportProtocolType($midocoBankExportProtocolType))) {
+        if ('' !== ($midocoBankExportProtocolTypeArrayErrorMessage = self::validateMidocoBankExportProtocolTypeForArrayConstraintFromSetMidocoBankExportProtocolType($midocoBankExportProtocolType))) {
             throw new InvalidArgumentException($midocoBankExportProtocolTypeArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankExportProtocolType = $midocoBankExportProtocolType;

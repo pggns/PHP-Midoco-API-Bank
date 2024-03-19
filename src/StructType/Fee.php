@@ -13,6 +13,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * - documentation: Service fee information, calculated by a delivering system, optional with fixed VAT liability information
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class Fee extends AbstractStructBase
 {
     /**
@@ -143,6 +144,13 @@ class Fee extends AbstractStructBase
      */
     protected ?int $price_ref = null;
     /**
+     * The configuration_ref
+     * Meta information extracted from the WSDL
+     * - documentation: Reference this fee to a special import behaviour
+     * @var int|null
+     */
+    protected ?int $configuration_ref = null;
+    /**
      * Constructor method for fee
      * @uses Fee::setReference_booking()
      * @uses Fee::setReference_price()
@@ -163,6 +171,7 @@ class Fee extends AbstractStructBase
      * @uses Fee::setPosition()
      * @uses Fee::setOrder_position()
      * @uses Fee::setPrice_ref()
+     * @uses Fee::setConfiguration_ref()
      * @param int $reference_booking
      * @param string $reference_price
      * @param string $fee_code
@@ -182,8 +191,9 @@ class Fee extends AbstractStructBase
      * @param int $position
      * @param int $order_position
      * @param int $price_ref
+     * @param int $configuration_ref
      */
-    public function __construct(?int $reference_booking = null, ?string $reference_price = null, ?string $fee_code = null, ?string $fee_description = null, ?float $total_price = null, ?string $currency = null, ?string $person_assignment = null, ?float $vat_free_amount = null, ?float $taxable_amount = null, ?bool $vat_included = null, ?string $fee_calculation_info = null, ?string $supplier_id = null, ?string $booking_id = null, ?string $status = 'OK', ?bool $is_agency_fee = null, ?bool $is_visible = true, ?int $position = null, ?int $order_position = null, ?int $price_ref = null)
+    public function __construct(?int $reference_booking = null, ?string $reference_price = null, ?string $fee_code = null, ?string $fee_description = null, ?float $total_price = null, ?string $currency = null, ?string $person_assignment = null, ?float $vat_free_amount = null, ?float $taxable_amount = null, ?bool $vat_included = null, ?string $fee_calculation_info = null, ?string $supplier_id = null, ?string $booking_id = null, ?string $status = 'OK', ?bool $is_agency_fee = null, ?bool $is_visible = true, ?int $position = null, ?int $order_position = null, ?int $price_ref = null, ?int $configuration_ref = null)
     {
         $this
             ->setReference_booking($reference_booking)
@@ -204,7 +214,8 @@ class Fee extends AbstractStructBase
             ->setIs_visible($is_visible)
             ->setPosition($position)
             ->setOrder_position($order_position)
-            ->setPrice_ref($price_ref);
+            ->setPrice_ref($price_ref)
+            ->setConfiguration_ref($configuration_ref);
     }
     /**
      * Get reference_booking value
@@ -640,6 +651,29 @@ class Fee extends AbstractStructBase
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($price_ref, true), gettype($price_ref)), __LINE__);
         }
         $this->price_ref = $this->{'price-ref'} = $price_ref;
+        
+        return $this;
+    }
+    /**
+     * Get configuration_ref value
+     * @return int|null
+     */
+    public function getConfiguration_ref(): ?int
+    {
+        return $this->{'configuration-ref'};
+    }
+    /**
+     * Set configuration_ref value
+     * @param int $configuration_ref
+     * @return \Pggns\MidocoApi\Bank\StructType\Fee
+     */
+    public function setConfiguration_ref(?int $configuration_ref = null): self
+    {
+        // validation for constraint: int
+        if (!is_null($configuration_ref) && !(is_int($configuration_ref) || ctype_digit($configuration_ref))) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($configuration_ref, true), gettype($configuration_ref)), __LINE__);
+        }
+        $this->configuration_ref = $this->{'configuration-ref'} = $configuration_ref;
         
         return $this;
     }

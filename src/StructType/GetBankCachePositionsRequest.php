@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBankCachePositionsRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBankCachePositionsRequest extends AbstractStructBase
 {
     /**

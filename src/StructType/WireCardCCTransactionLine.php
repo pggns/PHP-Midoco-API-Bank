@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for WireCardCCTransactionLine StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class WireCardCCTransactionLine extends AbstractStructBase
 {
     /**

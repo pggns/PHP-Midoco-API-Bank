@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for ImportBankFileRequest StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class ImportBankFileRequest extends AbstractStructBase
 {
     /**

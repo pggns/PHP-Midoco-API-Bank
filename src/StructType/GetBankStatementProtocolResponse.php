@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for GetBankStatementProtocolResponse StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class GetBankStatementProtocolResponse extends AbstractStructBase
 {
     /**
@@ -21,13 +22,13 @@ class GetBankStatementProtocolResponse extends AbstractStructBase
      * - ref: MidocoBankStatementProtocol
      * @var \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementProtocol[]
      */
-    protected array $MidocoBankStatementProtocol = [];
+    protected ?array $MidocoBankStatementProtocol = null;
     /**
      * Constructor method for GetBankStatementProtocolResponse
      * @uses GetBankStatementProtocolResponse::setMidocoBankStatementProtocol()
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementProtocol[] $midocoBankStatementProtocol
      */
-    public function __construct(array $midocoBankStatementProtocol = [])
+    public function __construct(?array $midocoBankStatementProtocol = null)
     {
         $this
             ->setMidocoBankStatementProtocol($midocoBankStatementProtocol);
@@ -36,18 +37,22 @@ class GetBankStatementProtocolResponse extends AbstractStructBase
      * Get MidocoBankStatementProtocol value
      * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementProtocol[]
      */
-    public function getMidocoBankStatementProtocol(): array
+    public function getMidocoBankStatementProtocol(): ?array
     {
         return $this->MidocoBankStatementProtocol;
     }
     /**
-     * This method is responsible for validating the values passed to the setMidocoBankStatementProtocol method
+     * This method is responsible for validating the value(s) passed to the setMidocoBankStatementProtocol method
      * This method is willingly generated in order to preserve the one-line inline validation within the setMidocoBankStatementProtocol method
+     * This has to validate that each item contained by the array match the itemType constraint
      * @param array $values
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateMidocoBankStatementProtocolForArrayConstraintsFromSetMidocoBankStatementProtocol(array $values = []): string
+    public static function validateMidocoBankStatementProtocolForArrayConstraintFromSetMidocoBankStatementProtocol(?array $values = []): string
     {
+        if (!is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
         foreach ($values as $getBankStatementProtocolResponseMidocoBankStatementProtocolItem) {
@@ -69,10 +74,10 @@ class GetBankStatementProtocolResponse extends AbstractStructBase
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementProtocol[] $midocoBankStatementProtocol
      * @return \Pggns\MidocoApi\Bank\StructType\GetBankStatementProtocolResponse
      */
-    public function setMidocoBankStatementProtocol(array $midocoBankStatementProtocol = []): self
+    public function setMidocoBankStatementProtocol(?array $midocoBankStatementProtocol = null): self
     {
         // validation for constraint: array
-        if ('' !== ($midocoBankStatementProtocolArrayErrorMessage = self::validateMidocoBankStatementProtocolForArrayConstraintsFromSetMidocoBankStatementProtocol($midocoBankStatementProtocol))) {
+        if ('' !== ($midocoBankStatementProtocolArrayErrorMessage = self::validateMidocoBankStatementProtocolForArrayConstraintFromSetMidocoBankStatementProtocol($midocoBankStatementProtocol))) {
             throw new InvalidArgumentException($midocoBankStatementProtocolArrayErrorMessage, __LINE__);
         }
         $this->MidocoBankStatementProtocol = $midocoBankStatementProtocol;

@@ -11,6 +11,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
  * This class stands for MidocoManualBookingBatch StructType
  * @subpackage Structs
  */
+#[\AllowDynamicProperties]
 class MidocoManualBookingBatch extends ManualBookingBatchDTO
 {
 }
