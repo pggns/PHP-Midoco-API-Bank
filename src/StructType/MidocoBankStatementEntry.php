@@ -25,6 +25,11 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      */
     protected ?string $bookingText = null;
     /**
+     * The purpose
+     * @var string|null
+     */
+    protected ?string $purpose = null;
+    /**
      * The valueAfterAccounted
      * Meta information extracted from the WSDL
      * - documentation: Aspecially fx entries could have a different value (base currency) after accounted/kontierung, but we have to keep the old value in case of error or deletion.
@@ -76,6 +81,7 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * Constructor method for MidocoBankStatementEntry
      * @uses MidocoBankStatementEntry::setReceiptNo()
      * @uses MidocoBankStatementEntry::setBookingText()
+     * @uses MidocoBankStatementEntry::setPurpose()
      * @uses MidocoBankStatementEntry::setValueAfterAccounted()
      * @uses MidocoBankStatementEntry::setMidocoBankStatementEntryPurpose()
      * @uses MidocoBankStatementEntry::setMidocoBankBookingJournal()
@@ -84,6 +90,7 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * @uses MidocoBankStatementEntry::setExtraPurpose()
      * @param string $receiptNo
      * @param string $bookingText
+     * @param string $purpose
      * @param float $valueAfterAccounted
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryPurpose[] $midocoBankStatementEntryPurpose
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankBookingJournal[] $midocoBankBookingJournal
@@ -91,11 +98,12 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
      * @param \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntryCharge[] $midocoBankStatementEntryCharge
      * @param string $extraPurpose
      */
-    public function __construct(?string $receiptNo = null, ?string $bookingText = null, ?float $valueAfterAccounted = null, ?array $midocoBankStatementEntryPurpose = null, ?array $midocoBankBookingJournal = null, ?array $midocoBankStatementEntryDetail = null, ?array $midocoBankStatementEntryCharge = null, ?string $extraPurpose = null)
+    public function __construct(?string $receiptNo = null, ?string $bookingText = null, ?string $purpose = null, ?float $valueAfterAccounted = null, ?array $midocoBankStatementEntryPurpose = null, ?array $midocoBankBookingJournal = null, ?array $midocoBankStatementEntryDetail = null, ?array $midocoBankStatementEntryCharge = null, ?string $extraPurpose = null)
     {
         $this
             ->setReceiptNo($receiptNo)
             ->setBookingText($bookingText)
+            ->setPurpose($purpose)
             ->setValueAfterAccounted($valueAfterAccounted)
             ->setMidocoBankStatementEntryPurpose($midocoBankStatementEntryPurpose)
             ->setMidocoBankBookingJournal($midocoBankBookingJournal)
@@ -146,6 +154,29 @@ class MidocoBankStatementEntry extends BankStatementEntryDTO
             throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($bookingText, true), gettype($bookingText)), __LINE__);
         }
         $this->bookingText = $bookingText;
+        
+        return $this;
+    }
+    /**
+     * Get purpose value
+     * @return string|null
+     */
+    public function getPurpose(): ?string
+    {
+        return $this->purpose;
+    }
+    /**
+     * Set purpose value
+     * @param string $purpose
+     * @return \Pggns\MidocoApi\Bank\StructType\MidocoBankStatementEntry
+     */
+    public function setPurpose(?string $purpose = null): self
+    {
+        // validation for constraint: string
+        if (!is_null($purpose) && !is_string($purpose)) {
+            throw new InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($purpose, true), gettype($purpose)), __LINE__);
+        }
+        $this->purpose = $purpose;
         
         return $this;
     }

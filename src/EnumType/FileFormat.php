@@ -38,6 +38,11 @@ class FileFormat extends AbstractStructEnumBase
      */
     const VALUE_V_11 = 'V11';
     /**
+     * Constant for value 'BAI2'
+     * @return string 'BAI2'
+     */
+    const VALUE_BAI_2 = 'BAI2';
+    /**
      * Constant for value 'UNKNOWN'
      * @return string 'UNKNOWN'
      */
@@ -49,6 +54,7 @@ class FileFormat extends AbstractStructEnumBase
      * @uses self::VALUE_WIRECARD
      * @uses self::VALUE_BOA
      * @uses self::VALUE_V_11
+     * @uses self::VALUE_BAI_2
      * @uses self::VALUE_UNKNOWN
      * @return string[]
      */
@@ -60,6 +66,7 @@ class FileFormat extends AbstractStructEnumBase
             self::VALUE_WIRECARD,
             self::VALUE_BOA,
             self::VALUE_V_11,
+            self::VALUE_BAI_2,
             self::VALUE_UNKNOWN,
         ];
     }
